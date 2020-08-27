@@ -51,15 +51,10 @@ module Enumerable
     return_value = true
 
     arr_size.times do |i|
-     unless !(yield(arr[i])) || arr.empty? #needs more conditions
-      return_value   
-     else
-      return_value = false
-     end
+      unless !yield(arr[i]) || arr.empty?
+        return_value = true
+      end
     end
-
     return_value
-  end  
-  
-  p my_all?(%w[ant be cat]) { |word| word.length >= 3 }
+  end
 end
