@@ -40,12 +40,11 @@ module Enumerable
     new_arr = []
     arr_size = arr.length
     # loop through array and pushes elements that are true
-    arr_size.times do |x|   
-        new_arr.push(arr[x]) if yield(arr[x])  
+    arr_size.times do |x|
+      new_arr.push(arr[x]) if yield(arr[x])
     end
     new_arr
   end
-  
-  p my_select([1, 4, 5, 50, 90, 70, 12]) { |element| element.even? }
 
+  # p my_select([1, 4, 5, 50, 90, 70, 12]) { |element| element.even? }
 end
