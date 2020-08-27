@@ -68,6 +68,8 @@ module Enumerable
 
     result_arr = []
 
+    true_value = true
+
     arr_size.times do |i|
       if yield(arr[i])
         result_arr.push(true)
@@ -80,6 +82,6 @@ module Enumerable
     # else
     #   return false
     # end
-    return true if result_arr.include? true
+    result_arr.include? true_value ? true : false
   end
 end
