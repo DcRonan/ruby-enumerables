@@ -48,10 +48,17 @@ module Enumerable
   def my_all?(arr)
     arr_size = arr.length
 
+    return_value = true
+
     arr_size.times do |i|
-     return true if yield(arr[i]) == true  
+     unless !(yield(arr[i])) || arr.empty? #needs more conditions
+      return_value   
+     else
+      return_value = false
+     end
     end
-    arr   
+
+    return_value
   end  
   
   p my_all?(%w[ant be cat]) { |word| word.length >= 3 }
