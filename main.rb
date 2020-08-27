@@ -26,7 +26,6 @@ module Enumerable
     arr_size.times do |i|
       yield(arr[i], i)
     end
-    # return initial array
     arr
   end
 
@@ -37,16 +36,16 @@ module Enumerable
   # ===========
 
   def my_select(arr)
+    # new array that contains the passed arguments
     new_arr = []
     arr_size = arr.length
-
-    arr_size.times do |x|
-      if yield(arr[x]) == true       
-        new_arr.push(arr[x])  
-      end
+    # loop through array and pushes elements that are true
+    arr_size.times do |x|   
+        new_arr.push(arr[x]) if yield(arr[x])  
     end
     new_arr
   end
   
-  p my_select([1, 4, 5, 50, 90, 70, 12]) { |element| element < 40 }
+  p my_select([1, 4, 5, 50, 90, 70, 12]) { |element| element.even? }
+
 end
