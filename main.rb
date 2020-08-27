@@ -37,15 +37,16 @@ module Enumerable
   # ===========
 
   def my_select(arr)
-
     new_arr = []
+    arr_size = arr.length
 
-    arr.my_each do |x| 
-    if x < 50
-      x.push(new_arr)
+    arr_size.times do |x|
+      # if arr[x] < 50
+      #   new_arr.push(arr[x])
+      # end
+      new_arr.push(arr[x])
     end
     new_arr
-  end  
-
-  p my_select([1, 4, 5, 50, 90, 70, 12]) { |element| puts element }
+  end
+  # p my_select([1, 4, 5, 50, 90, 70, 12]) { |element| element < 40 }
 end
