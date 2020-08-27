@@ -42,7 +42,7 @@ module Enumerable
   end
 
   # ========
-  #  my_all
+  #  my_all?
   # ========
 
   # def my_all?(arr = nil)
@@ -60,7 +60,7 @@ module Enumerable
   # end
 
   # ========
-  #  my_any
+  #  my_any?
   # ========
 
   def my_any?(arr)
@@ -77,7 +77,27 @@ module Enumerable
         result_arr.push(false)
       end
     end
-    
+
     result_arr.include? true_value ? true : false
+  end
+
+  # ========
+  #  my_none?
+  # ========
+
+  def my_none?(arr)
+    arr_size = arr.length
+
+    return_value = true
+
+    arr_size.times do |i|
+      unless !yield(arr[i]) || arr[i] == nil ||
+             arr[i] == false || !block_given?
+
+        return_value = false
+      end
+    end
+
+    return_value
   end
 end
