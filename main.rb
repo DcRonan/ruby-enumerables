@@ -1,25 +1,19 @@
+# rubocop:disable Style/CaseEquality
+
 module Enumerable
-  #my_each method definition
-  
-  def my_each(array)
-    #check if block is given
-    yield if block_given?
 
-    #if block is given, iterate through the array
-    for i in 0..array.size() - 1
-      #push yield array element to new_array
-      yield(array[i])
-    end
-    array
+# =========
+#  my_each
+# =========  
+
+def my_each(arr)
+  arr_size = arr.length
+  arr_size.times do |i|
+    yield(arr[i])
   end
+  arr
+end
 
- #my_each block - for arrays
- my_each(array) { |element| p element * 2 }
-
-# times test
-  #var_size.times do |i|
-    #puts "hi: #{i}" 
-  #end
-  #print var
+# p test([1, 4, 5, 6, 100, 500, 14]) { |element| puts element }
 
 end
