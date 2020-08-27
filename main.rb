@@ -45,13 +45,14 @@ module Enumerable
   #  my_all
   # ========
 
-  def my_all?(arr)
+  def my_all?(arr = nil)
     arr_size = arr.length
 
-    return_value = true
+    return_value = false
 
     arr_size.times do |i|
-      unless !yield(arr[i]) || arr.empty?
+      unless !yield(arr[i]) || arr[i] == nil  ||
+      arr[i] == false || yield(arr[i]).empty?
         return_value = true
       end
     end
