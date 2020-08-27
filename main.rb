@@ -6,15 +6,12 @@ module Enumerable
   def my_each(arr)
     # variable for the array's length
     arr_size = arr.length
-    # times loop and returns each number in the array
+    # loops and returns each number in the array
     arr_size.times do |i|
       yield(arr[i])
     end
-    # return initial array
     arr
   end
-
-  # p my_each([1, 4, 5, 6, 100, 500, 14]) { |element| puts element }
 
   # ====================
   #  my_each_with_index
@@ -22,14 +19,12 @@ module Enumerable
 
   def my_each_with_index(arr)
     arr_size = arr.length
-    # times loop and returns each number and index in the array
+    # loops and returns each number and index in the array
     arr_size.times do |i|
       yield(arr[i], i)
     end
     arr
   end
-
-  # p my_each_with_index([1,5,25,56,100]) { |element, index| puts "#{element} and #{index}" }
 
   # ===========
   #  my_select
@@ -46,5 +41,18 @@ module Enumerable
     new_arr
   end
 
-  # p my_select([1, 4, 5, 50, 90, 70, 12]) { |element| element.even? }
+  # ========
+  #  my_all
+  # ========
+
+  def my_all?(arr)
+    arr_size = arr.length
+
+    arr_size.times do |i|
+     return true if yield(arr[i]) == true  
+    end
+    arr   
+  end  
+  
+  p my_all?(%w[ant be cat]) { |word| word.length >= 3 }
 end
