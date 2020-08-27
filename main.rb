@@ -77,11 +77,7 @@ module Enumerable
         result_arr.push(false)
       end
     end
-    # if result_arr.include? true
-    #   return true
-    # else
-    #   return false
-    # end
+    
     result_arr.include? true_value ? true : false
   end
 end
