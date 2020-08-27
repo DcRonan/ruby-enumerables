@@ -41,12 +41,12 @@ module Enumerable
     arr_size = arr.length
 
     arr_size.times do |x|
-      # if arr[x] < 50
-      #   new_arr.push(arr[x])
-      # end
-      new_arr.push(arr[x])
+      if yield(arr[x]) == true       
+        new_arr.push(arr[x])  
+      end
     end
     new_arr
   end
-  # p my_select([1, 4, 5, 50, 90, 70, 12]) { |element| element < 40 }
+  
+  p my_select([1, 4, 5, 50, 90, 70, 12]) { |element| element < 40 }
 end
