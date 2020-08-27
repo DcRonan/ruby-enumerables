@@ -1,0 +1,13 @@
+                                    Test Cases for Enumerables
+
+
+A. #my_each method (for arrays only)                                    
+
+1. check that my_each doesn't yield anything and only returns the original array
+
+2. - check that my_each yields if a block is given
+   - check that my_each does the code in the block
+   - check that my_each returns the original array
+
+3. check that the return value/returned array changes if bang operator 
+   is used on the my_each method
