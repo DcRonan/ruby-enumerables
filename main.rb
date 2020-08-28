@@ -1,3 +1,4 @@
+# rubocop:disable Style/CaseEquality, Metrics/ModuleLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
 module Enumerable
   # =========
   #  my_each
@@ -72,7 +73,7 @@ module Enumerable
       new_arr.push(arr[x]) if yield(arr[x])
     end
     arr_size.times do |i|
-      false_arr.push(arr[i]) if !yield(arr[i])
+      false_arr.push(arr[i]) unless yield(arr[i])
     end
     if new_arr.empty? || false_arr.empty?
       result
@@ -129,16 +130,14 @@ module Enumerable
   # ==========
 
   def my_count(arr)
-    return arr.size() if !block_given?
+    return arr.length unless block_given?
 
     arr_size = arr.length
 
     count = 0
 
     arr_size.times do |i|
-      if yield(arr[i])
-        count += 1
-      end
+      count += 1 if yield(arr[i])
     end
 
     count
@@ -149,8 +148,9 @@ module Enumerable
   # ========
 
   def my_map(arr)
-    return "#<Enumerator: ${arr}: map" if !block_given?
     arr = arr.to_a
+    return "#<Enumerator: #{arr}: map" unless block_given?
+
     arr_size = arr.length
 
     new_arr = []
@@ -169,3 +169,4 @@ module Enumerable
     new_arr
   end
 end
+# rubocop:enable Style/CaseEquality, Metrics/ModuleLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
