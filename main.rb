@@ -46,20 +46,6 @@ module Enumerable
   #  my_all
   # ========
 
-  # def my_all?(arr = nil)
-  #   arr_size = arr.length
-
-  #   return_value = false
-
-  #   arr_size.times do |i|
-  #     unless !yield(arr[i]) || arr[i].nil? ||
-  #            arr[i] == false || yield(arr[i]).empty?
-  #       return_value = true
-  #     end
-  #   end
-  #   return_value
-  # end
-
   def my_all?(arr)
     return false unless block_given?
 
@@ -168,5 +154,20 @@ module Enumerable
 
     new_arr
   end
+
+  # ===========
+  #  my_inject
+  # ===========
+
+  def my_inject(_arg)
+    n = n.to_a
+
+    arr_size = n.length
+
+    arr_size.times do |i|
+    end
+  end
+
+  # p my_inject(5..10) { |sum, n| sum + n } #=> 45
 end
 # rubocop:enable Style/CaseEquality, Metrics/ModuleLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
