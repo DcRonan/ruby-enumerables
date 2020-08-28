@@ -104,23 +104,43 @@ module Enumerable
   end
 
   # =========
-  #  my_none
+  #  my_none?
   # =========
 
   def my_none?(arr)
     return false unless block_given?
-    
+
     arr_size = arr.length
 
     return_value = true
 
     arr_size.times do |i|
       unless !yield(arr[i]) || arr[i].nil? ||
-             arr[i] == false 
+             arr[i] == false
         return_value = false
       end
     end
 
     return_value
+  end
+
+  # =========
+  #  my_count
+  # =========
+
+  def my_count(arr)
+    return arr.size() if !block_given?
+
+    arr_size = arr.length
+
+    count = 0
+
+    arr_size.times do |i|
+      if yield(arr[i])
+        count += 1
+      end
+    end
+
+    count
   end
 end
