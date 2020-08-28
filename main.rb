@@ -103,9 +103,9 @@ module Enumerable
     result_arr.include? true_value ? true : false
   end
 
-  # =========
+  # ==========
   #  my_none?
-  # =========
+  # ==========
 
   def my_none?(arr)
     return false unless block_given?
@@ -124,9 +124,9 @@ module Enumerable
     return_value
   end
 
-  # =========
+  # ==========
   #  my_count
-  # =========
+  # ==========
 
   def my_count(arr)
     return arr.size() if !block_given?
@@ -143,4 +143,19 @@ module Enumerable
 
     count
   end
+
+  # ========
+  #  my_map
+  # ========
+
+  def my_map(arr)
+    new_arr = []
+
+    5.times do |x|
+      new_arr.push(x) if yield(arr) && block_given?
+    end
+    new_arr
+  end
+  
+  p my_map(1..4) { |i| i * i }
 end
