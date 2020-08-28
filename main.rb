@@ -150,7 +150,7 @@ module Enumerable
 
   def my_map(arr)
     return "#<Enumerator: ${arr}: map" if !block_given?
-
+    arr = arr.to_a
     arr_size = arr.length
 
     new_arr = []
