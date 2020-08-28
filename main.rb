@@ -4,6 +4,8 @@ module Enumerable
   # =========
 
   def my_each(arr)
+    return arr unless block_given?
+
     # variable for the array's length
     arr_size = arr.length
     # loops and returns each number in the array
@@ -18,6 +20,8 @@ module Enumerable
   # ====================
 
   def my_each_with_index(arr)
+    return arr unless block_given?
+    
     arr_size = arr.length
     # loops and returns each number and index in the array
     arr_size.times do |i|
