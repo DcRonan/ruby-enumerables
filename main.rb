@@ -1,4 +1,3 @@
-# rubocop:disable Style/CaseEquality, Metrics/ModuleLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
 module Enumerable
   # =========
   #  my_each
@@ -77,7 +76,6 @@ module Enumerable
     arr_size = arr.length
 
     result_arr = []
-
     true_value = true
 
     arr_size.times do |i|
@@ -98,7 +96,6 @@ module Enumerable
     return false unless block_given?
 
     arr_size = arr.length
-
     return_value = true
 
     arr_size.times do |i|
@@ -107,7 +104,6 @@ module Enumerable
         return_value = false
       end
     end
-
     return_value
   end
 
@@ -119,13 +115,11 @@ module Enumerable
     return arr.length unless block_given?
 
     arr_size = arr.length
-
     count = 0
 
     arr_size.times do |i|
       count += 1 if yield(arr[i])
     end
-
     count
   end
 
@@ -138,20 +132,16 @@ module Enumerable
     return "#<Enumerator: #{arr}: map" unless block_given?
 
     arr_size = arr.length
-
     new_arr = []
 
     arr_size.times do |i|
       if block_given?
         new_arr << yield(arr[i])
-
       elsif yield(arr[i]).empty?
         nil_value = nil
-
         new_arr << nil_value
       end
     end
-
     new_arr
   end
 
@@ -162,29 +152,22 @@ module Enumerable
   def my_inject(arr)
     result = 0
     sum = 0
-    string = ""
-    
-    return "#<Enumerator: ${arr}: map" if !block_given?
+    string = ''
+    return '#<Enumerator: ${arr}: map' unless block_given?
 
     arr_size = arr.length
-
     arr_size.times do |i|
       if block_given?
-         if arr[i].class == Integer || arr[i].class == Float
-             result += yield(sum, arr[i])
-         elsif arr[i].class == String
-             result =  yield(string, arr[i])
-         end
-        
-        #return nil if yield(sum,arr[i]).empty? || 
-        #yield(string,arr[i]).empty?
-
+        if arr[i].class == Integer || arr[i].class == Float
+          result += yield(sum, arr[i])
+        elsif arr[i].class == String
+          result = yield(string, arr[i])
+        end
+        # return nil if yield(sum,arr[i]).empty? ||
+        # yield(string,arr[i]).empty?
       end
     end
-
     result
   end
-
   # p my_inject(5..10) { |sum, n| sum + n } #=> 45
 end
-# rubocop:enable Style/CaseEquality, Metrics/ModuleLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
