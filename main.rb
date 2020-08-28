@@ -95,6 +95,7 @@ module Enumerable
         return_value = false
       end
     end
+
     return_value
   end
 end
