@@ -159,13 +159,30 @@ module Enumerable
   #  my_inject
   # ===========
 
-  def my_inject(_arg)
-    n = n.to_a
+  def my_inject(arr)
+    result = 0
+    sum = 0
+    string = ""
+    
+    return "#<Enumerator: ${arr}: map" if !block_given?
 
-    arr_size = n.length
+    arr_size = arr.length
 
     arr_size.times do |i|
+      if block_given?
+         if arr[i].class == Integer || arr[i].class == Float
+             result += yield(sum, arr[i])
+         elsif arr[i].class == String
+             result =  yield(string, arr[i])
+         end
+        
+        #return nil if yield(sum,arr[i]).empty? || 
+        #yield(string,arr[i]).empty?
+
+      end
     end
+
+    result
   end
 
   # p my_inject(5..10) { |sum, n| sum + n } #=> 45
