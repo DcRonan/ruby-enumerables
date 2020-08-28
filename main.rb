@@ -108,13 +108,15 @@ module Enumerable
   # =========
 
   def my_none?(arr)
+    return false unless block_given?
+    
     arr_size = arr.length
 
     return_value = true
 
     arr_size.times do |i|
       unless !yield(arr[i]) || arr[i].nil? ||
-             arr[i] == false || !block_given?
+             arr[i] == false 
         return_value = false
       end
     end
