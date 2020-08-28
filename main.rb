@@ -45,18 +45,41 @@ module Enumerable
   #  my_all
   # ========
 
-  def my_all?(arr = nil)
+  # def my_all?(arr = nil)
+  #   arr_size = arr.length
+
+  #   return_value = false
+
+  #   arr_size.times do |i|
+  #     unless !yield(arr[i]) || arr[i].nil? ||
+  #            arr[i] == false || yield(arr[i]).empty?
+  #       return_value = true
+  #     end
+  #   end
+  #   return_value
+  # end
+
+  def my_all?(arr)
+    return false unless block_given?
+
+    # new array that contains the passed arguments
+    new_arr = []
+    false_arr = []
     arr_size = arr.length
-
-    return_value = false
-
-    arr_size.times do |i|
-      unless !yield(arr[i]) || arr[i].nil? ||
-             arr[i] == false || yield(arr[i]).empty?
-        return_value = true
-      end
+    result = true
+    # loop through array and pushes elements that are true
+    arr_size.times do |x|
+      new_arr.push(arr[x]) if yield(arr[x])
     end
-    return_value
+    arr_size.times do |i|
+      false_arr.push(arr[i]) if !yield(arr[i])
+    end
+    if new_arr.empty? || false_arr.empty?
+      result
+    else
+      result = false
+    end
+    result
   end
 
   # ========
