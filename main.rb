@@ -149,13 +149,23 @@ module Enumerable
   # ========
 
   def my_map(arr)
+    return "#<Enumerator: ${arr}: map" if !block_given?
+
+    arr_size = arr.length
+
     new_arr = []
 
-    5.times do |x|
-      new_arr.push(x) if yield(arr) && block_given?
+    arr_size.times do |i|
+      if block_given?
+        new_arr << yield(arr[i])
+
+      elsif yield(arr[i]).empty?
+        nil_value = nil
+
+        new_arr << nil_value
+      end
     end
+
     new_arr
   end
-  
-  p my_map(1..4) { |i| i * i }
 end
