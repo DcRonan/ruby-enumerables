@@ -173,5 +173,8 @@ module Enumerable
     end
     result
   end
-  # p my_inject(5..10) { |sum, n| sum + n } #=> 45
+
+  def multiply_els(arr)
+    arr.my_inject(:*)
+  end  
 end
