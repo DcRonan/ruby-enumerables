@@ -197,7 +197,8 @@ module Enumerable
     new_arr = []
 
     arr_size.times do |i|
-      #p prc.call(yield(arr[i]))
+      if block_given? && !proc.nil?
+        return proc
       if block_given?
        #p prc.call(yield(arr[i]))
         new_arr << yield(arr[i])
@@ -209,15 +210,8 @@ module Enumerable
     new_arr
   end
 
-  #define a proc
   proc = Proc.new {|i| i * 2}
-  
-  #use either proc or block; do a conversion
-  #p y_squared.call(5)
-  p my_map([1,2,3,4,5], proc)
-  
-  #define a proc
-  #my_map([1,2,3,4]) { |element| element * element } 
-
+  p proc.call(10)
+  p my_map([1,2,3,4]) { |element| element * element } 
 
   end
