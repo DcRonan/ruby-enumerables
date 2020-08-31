@@ -64,6 +64,26 @@ p my_each(my_array) {|i|  p i }
 # p my_array.my_map(&proc)
 # p my_array.my_map {|i| i**2}
 # p my_array.my_map
+
+#################
+
+
+#Using a proc ; no conversion into a proc
+#proc = Proc.new { |i| i * 2 }
+#p my_map([1,2,3,4,5], proc) 
+#def my_map(arr, prc).....end
+  
+#Using a block; convert block into a proc using '&'
+#p my_map([1,2,3,4,5].reverse) { |i| i * 2 }
+#def my_map(arr, &prc)......end
+#working solution
+  
+#Using a proc; convert proc into a block then proc again
+#proc = Proc.new { |i| i * 2 }
+#p my_map([1,2,3,4,5].reverse, &proc)
+#def my_map(arr, &prc)......end
+#working solution
+
 ##########################################
 ####### test cases for my_inject #########
 # p my_array.my_inject {|i| i * 3}
