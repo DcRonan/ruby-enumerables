@@ -189,29 +189,25 @@ module Enumerable
   # ==============================
 
   #Procs and blocks for my_map method
-  def my_map(arr, prc)
+  def my_map(arr, &prc )
     arr = arr.to_a
-    return "#<Enumerator: #{arr}: map" unless block_given?
+    #return "#<Enumerator: #{arr}: map" unless block_given?
 
     arr_size = arr.length
     new_arr = []
 
     arr_size.times do |i|
-      if block_given? && !proc.nil?
+      if block_given? && arr.class == Proc
         return proc
+      end
       if block_given?
-       #p prc.call(yield(arr[i]))
-        new_arr << yield(arr[i])
-      elsif yield(arr[i]).empty?
-        nil_value = nil
-        new_arr << nil_value
+        new_arr << prc.call(arr[i])
       end
     end
+    #p new_arr
     new_arr
   end
 
-  proc = Proc.new {|i| i * 2}
-  p proc.call(10)
-  p my_map([1,2,3,4]) { |element| element * element } 
+
 
   end
