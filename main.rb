@@ -15,6 +15,8 @@ module Enumerable
     arr
   end
 
+  
+
   # ====================
   #  my_each_with_index
   # ====================
@@ -174,7 +176,48 @@ module Enumerable
     result
   end
 
+  # =============
+  #  multiply_els
+  # =============
+
   def multiply_els(arr)
     arr.my_inject(:*)
   end  
-end
+
+  # ==============================
+  #  my_map using procs and blocks
+  # ==============================
+
+  #Procs and blocks for my_map method
+  def my_map(arr, prc)
+    arr = arr.to_a
+    return "#<Enumerator: #{arr}: map" unless block_given?
+
+    arr_size = arr.length
+    new_arr = []
+
+    arr_size.times do |i|
+      #p prc.call(yield(arr[i]))
+      if block_given?
+       #p prc.call(yield(arr[i]))
+        new_arr << yield(arr[i])
+      elsif yield(arr[i]).empty?
+        nil_value = nil
+        new_arr << nil_value
+      end
+    end
+    new_arr
+  end
+
+  #define a proc
+  proc = Proc.new {|i| i * 2}
+  
+  #use either proc or block; do a conversion
+  #p y_squared.call(5)
+  p my_map([1,2,3,4,5], proc)
+  
+  #define a proc
+  #my_map([1,2,3,4]) { |element| element * element } 
+
+
+  end
