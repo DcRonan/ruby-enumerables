@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity,Metrics/ModuleLength,Metrics/MethodLength
 module Enumerable
   # =========
   #  my_each
@@ -15,15 +16,13 @@ module Enumerable
     arr
   end
 
-  
-
   # ====================
   #  my_each_with_index
   # ====================
 
   def my_each_with_index(arr)
     return arr unless block_given?
-    
+
     arr_size = arr.length
     # loops and returns each number and index in the array
     arr_size.times do |i|
@@ -169,8 +168,6 @@ module Enumerable
         elsif arr[i].class == String
           result = yield(string, arr[i])
         end
-        # return nil if yield(sum,arr[i]).empty? ||
-        # yield(string,arr[i]).empty?
       end
     end
     result
@@ -182,32 +179,7 @@ module Enumerable
 
   def multiply_els(arr)
     arr.my_inject(:*)
-  end  
-
-  # ==============================
-  #  my_map using procs and blocks
-  # ==============================
-
-  #Procs and blocks for my_map method
-  def my_map(arr, &prc )
-    arr = arr.to_a
-    #return "#<Enumerator: #{arr}: map" unless block_given?
-
-    arr_size = arr.length
-    new_arr = []
-
-    arr_size.times do |i|
-      if block_given? && arr.class == Proc
-        return proc
-      end
-      if block_given?
-        new_arr << prc.call(arr[i])
-      end
-    end
-    #p new_arr
-    new_arr
   end
+end
 
-
-
-  end
+# rubocop:enable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity,Metrics/ModuleLength,Metrics/MethodLength
