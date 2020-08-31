@@ -26,11 +26,9 @@ The methods that we have created are: .each, .each_with_index, .select, .all, .a
 
 ## Live Demo
 
-#### Click on image below..
+#### Click on the button below..
 
-<a href="https://repl.it/@DanielRonan1/enumerables#main.rb" target="_blank">
-    <img src="src/assets/svg/monitor.svg">
-</a>
+[![Deploy](https://vercel.com/button)](https://repl.it/@DanielRonan1/enumerables#main.rb)
 
 ## Run Tests
 
