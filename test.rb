@@ -1,9 +1,10 @@
 require_relative 'main.rb'
-arr = [2, 6, 4, 6, 8]
+my_array = [2, 6, 4, 6, 8]
 # my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6 }
 # my_range = (10..15)
 ####### test cases for my_each ###########
 # p my_array.my_each { |i|  i }
+p my_each(my_array) {|i|  p i }
 # my_range.each { |i| puts i}
 # p my_hash.each { |i, j|  "#{i} : #{j}"}
 ##########################################
@@ -57,7 +58,7 @@ arr = [2, 6, 4, 6, 8]
 # p (res = ['apple', 'dante', 'cherry'].my_count do |element| element == 'apple' end)
 ##########################################
 ####### test cases for my_map #########
-p my_map(arr) {|i| i * i}
+# p my_map(arr) {|i| i * i}
 # p [2, 6, 4, 6, 8].my_map{|i| i * i}
 # proc = Proc.new {|i| i**2}
 # p my_array.my_map(&proc)
