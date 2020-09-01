@@ -72,7 +72,7 @@ require_relative 'main.rb'
 ##########################################
 ####### test cases for my_inject #########
 # p my_array.my_inject {|i| i * 3}
-# p [2, 6, 4, 6, 8].my_inject{|i| i * 5}
+p [2, 6, 4, 6, 8].my_inject{|i| i * 5}
 # p my_array.my_inject {|i| i**2}
 # p my_array.my_inject (:*)
 ##########################################

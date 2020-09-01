@@ -173,7 +173,7 @@ module Enumerable
 
   def my_map(arr = nil)
     arr = Array(self).to_a
-    return "#<Enumerator: #{arr}: map" unless block_given?
+    return to_enum unless block_given?
     
     arr_size = Array(self).length
     new_arr = []
@@ -193,24 +193,25 @@ module Enumerable
   #  my_inject
   # ===========
 
-  def my_inject(arr)
+  def my_inject(arr = nil)
     result = 0
     sum = 0
     string = ''
-    return '#<Enumerator: ${arr}: map' unless block_given?
+    return to_enum unless block_given?
 
-    arr_size = arr.length
+    arr_size = Array(self).length
     arr_size.times do |i|
       if block_given?
-        if arr[i].class == Integer || arr[i].class == Float
-          result += yield(sum, arr[i])
-        elsif arr[i].class == String
-          result = yield(string, arr[i])
+        if Array(self)[i].class == Integer || Array(self)[i].class == Float
+          result += yield(sum, Array(self)[i])
+        elsif Array(self)[i].class == String
+          result = yield(string, Array(self)[i])
         end
       end
     end
-    result
+    self
   end
+end
 
   # =============
   #  multiply_els
@@ -219,6 +220,5 @@ module Enumerable
   def multiply_els(arr)
     arr.my_inject(:*)
   end
-end
 
 # rubocop:enable Metrics/ModuleLength
