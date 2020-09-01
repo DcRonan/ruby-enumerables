@@ -99,7 +99,9 @@ module Enumerable
         end
       elsif arr == String || arr == Regexp
         my_each do |x|
-          return result = false unless x.match(regex_exp)
+          return result = false unless x =~ regex_exp
+          #return result = false unless x.include? "#{regex_exp}"
+          #return result = false unless x.match(regex_exp)
           #puts "#{arr}"
         end
       elsif arr == Integer
@@ -154,19 +156,31 @@ module Enumerable
   #  my_count
   # ==========
 
-  def my_count(arr = nil)
-
+  def my_count(count_one = 0)
     arr_size = Array(self).length
     count = 0
-    
-    if Array(self).nil? && !block_given?
-    arr_size.times do |i|
-      count += 1 if yield(Array(self)[i])
+
+    #puts "Array(self) : #{Array(self)}"
+
+    if !block_given?
+      if !count_one.zero?
+        arr_size.times do |i|
+          count += 1 if Array(self)[i] == count_one
+        end
+      else
+        return arr_size
+      end
     end
+
+    if block_given? && !Array(self).nil?
+      arr_size.times do |i|
+        count += 1 if yield(Array(self)[i])
+      end
     end
+
     count
   end
-
+  
   # ========
   #  my_map
   # ========
