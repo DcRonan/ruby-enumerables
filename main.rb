@@ -154,14 +154,15 @@ module Enumerable
   #  my_count
   # ==========
 
-  def my_count(arr)
-    return arr.length unless block_given?
+  def my_count(arr = nil)
 
-    arr_size = arr.length
+    arr_size = Array(self).length
     count = 0
-
+    
+    if Array(self).nil? && !block_given?
     arr_size.times do |i|
-      count += 1 if yield(arr[i])
+      count += 1 if yield(Array(self)[i])
+    end
     end
     count
   end
@@ -170,17 +171,17 @@ module Enumerable
   #  my_map
   # ========
 
-  def my_map(arr)
-    arr = arr.to_a
+  def my_map(arr = nil)
+    arr = Array(self).to_a
     return "#<Enumerator: #{arr}: map" unless block_given?
-
-    arr_size = arr.length
+    
+    arr_size = Array(self).length
     new_arr = []
 
     arr_size.times do |i|
       if block_given?
-        new_arr << yield(arr[i])
-      elsif yield(arr[i]).empty?
+        new_arr << yield(Array(self)[i])
+      elsif yield(Array(self)[i]).empty?
         nil_value = nil
         new_arr << nil_value
       end
