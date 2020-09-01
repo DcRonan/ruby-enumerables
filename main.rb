@@ -36,6 +36,8 @@ module Enumerable
   # ===========
 
   def my_select(arr = nil)
+    return to_enum unless block_given?
+
     # new array that contains the passed arguments
     new_arr = []
     arr_size = Array(self).length
@@ -50,35 +52,57 @@ module Enumerable
   #  my_all
   # ========
 
-  def my_all?(arr = nil)
-    return false unless block_given?
+  # def my_all?(arr = nil)
+  #   return false unless block_given?
 
-    # new array that contains the passed arguments
-    new_arr = []
-    false_arr = []
-    arr_size = Array(self).length
+  #   # new array that contains the passed arguments
+  #   new_arr = []
+  #   false_arr = []
+  #   result = true
+  #   # loop through array and pushes elements that are true
+  #   my_each do |x|
+  #     if yield(Array(self)[x])
+  #       if yield(Array(self)[x]).class == Integer
+  #         new_arr.push(Array(self)[x]) 
+  #       elsif yield(Array(self)[x]).class == Float 
+  #         #should raise an error if even? or odd? methods are in the block
+
+  #         new_arr.push(Array(self)[x]) 
+  #       elsif yield(Array(self)[x]).class == String
+  #         new_arr.push(Array(self)[x]) if yield(Array(self)[x]).match?(self) #regex/../
+  #       end
+  #     end
+  #   end
+  #   arr_size.times do |i|
+  #     false_arr.push(Array(self)[i]) unless yield(Array(self)[i])
+  #   end
+  #   if new_arr.empty? || false_arr.empty?
+  #     result
+  #   else
+  #     result = false
+  #   end
+  #   result
+  # end
+
+  def my_all?(arr = nil)
+    return false if !block_given? && arr.nil?
+
     result = true
     # loop through array and pushes elements that are true
-    arr_size.times do |x|
-      if yield(Array(self)[x])
-        if yield(Array(self)[x]).class == Integer
-          new_arr.push(Array(self)[x]) 
-        elsif yield(Array(self)[x]).class == Float 
-          #should raise an error if even? or odd? methods are in the block
-
-          new_arr.push(Array(self)[x]) 
-        elsif yield(Array(self)[x]).class == String
-          new_arr.push(Array(self)[x]) if yield(Array(self)[x]).match?(#regex/../)
+    my_each do |i|
+      if arr.nil?
+        my_each do |i|
+         return result = false unless yield(i)
         end
-      end
-    end
-    arr_size.times do |i|
-      false_arr.push(Array(self)[i]) unless yield(Array(self)[i])
-    end
-    if new_arr.empty? || false_arr.empty?
-      result
-    else
-      result = false
+      elsif arr == String || arr == Regexp
+        my_each do |x|
+        return result = false unless x.match?(arr)
+        end
+      elsif arr == Integer
+        my_each do |y|
+        return result = false unless y == arr
+        end
+      end  
     end
     result
   end

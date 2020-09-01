@@ -1,5 +1,5 @@
 require_relative 'main.rb'
- my_array = [2, 6, 4, 6, 8,9]
+ my_array = [2, 6, 4, 6, 8, 9]
  my_array_one = [1.0, 2.0, 3,0]
  my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7 }
  my_range = (10..15)
@@ -24,7 +24,7 @@ require_relative 'main.rb'
 # p my_range.my_all? { |i| i.even? }
 # p my_hash.my_all? { |i, j| j.even? }# j here is the value
 # p res = ['apple', 'orange'].my_all?
-# p ['Gurbuz', 'Turkiye', 'uretim'].my_all?(/u/)
+p ['Gurbuz', 'Turkiye', 'retim'].my_all?(/u/)
 # p ['Gurbuz', 'Turkiye', 'kretim'].my_all?(/v/)
 ##########################################
 ####### test cases for my_any? ###########
