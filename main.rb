@@ -195,32 +195,35 @@ module Enumerable
   #  my_inject
   # ===========
 
-  def my_inject(arr = nil)
-    result = 0
-    sum = 0
-    string = ''
-    return to_enum unless block_given?
+  # def my_inject(arr = nil)
+  #   result = 0
+  #   sum = 0
+  #   string = ''
+  #   return to_enum unless block_given?
 
-    arr_size = Array(self).length
-    arr_size.times do |i|
-      if block_given?
-        if Array(self)[i].class == Integer || Array(self)[i].class == Float
-          result += yield(sum, Array(self)[i])
-        elsif Array(self)[i].class == String
-          result = yield(string, Array(self)[i])
-        end
-      end
-    end
-    self
-  end
+  #   arr_size = Array(self).length
+  #   arr_size.times do |i|
+  #     if block_given?
+  #       if Array(self)[i].class == Integer || Array(self)[i].class == Float
+  #         result += yield(sum, Array(self)[i])
+  #       elsif Array(self)[i].class == String
+  #         result = yield(string, Array(self)[i])
+  #       end
+  #     end
+  #   end
+  #   self
+  # end
 
   def my_inject(arr = nil)
     memo = 0
 
-    my_each do |i|
-      
-    end  
-  end  
+    if arr.nil?
+    my_each do |i, x|
+      memo += yield(i, x)
+    end
+    end
+  memo
+  end
 end
 
   # =============
