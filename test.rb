@@ -1,8 +1,8 @@
 require_relative 'main.rb'
- my_array = [3, 2, 6, 3, 4, 6, 8, 3, 11, 3]
- my_array_one = [1.0, 2.0, 3,0]
- my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7 }
- my_range = (10..15)
+my_array = [3, 2, 6, 3, 4, 6, 8, 3, 11, 3]
+my_array_one = [1.0, 2.0, 3, 0]
+my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
+my_range = (10..15)
 ####### test cases for my_each ###########
 # p my_array.my_each { |i| puts i }
 # my_range.my_each { |i| puts i}
@@ -59,8 +59,8 @@ require_relative 'main.rb'
 # p my_hash.my_count
 # p my_array.my_count(3)
 # p my_range.my_count(11)
-# p my_hash.my_count(4)
-# p res = ['apple', 'dante', 'cherry'].my_count { |element| element == 'apple' }
+# p my_hash.my_count(2)
+# p res = ['apple', 'apple', 'dante', 'cherry'].my_count { |element| element == 'apple' }
 ##########################################
 ####### test cases for my_map #########
 # p my_array.my_map {|i| i * i}

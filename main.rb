@@ -160,8 +160,6 @@ module Enumerable
     arr_size = Array(self).length
     count = 0
 
-    #puts "Array(self) : #{Array(self)}"
-
     if !block_given?
       if !count_one.zero?
         arr_size.times do |i|
@@ -177,7 +175,6 @@ module Enumerable
         count += 1 if yield(Array(self)[i])
       end
     end
-
     count
   end
   
@@ -216,6 +213,14 @@ module Enumerable
     end
     self
   end
+
+  def my_inject(arr = nil)
+    memo = 0
+
+    my_each do |i|
+      
+    end  
+  end  
 end
 
   # =============
