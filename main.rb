@@ -84,8 +84,11 @@ module Enumerable
   #   result
   # end
 
-  def my_all?(arr = nil)
+  def my_all?(arr = nil, regex_exp = /[a-z][A-Z][0-9]/) #regex for symbols 
     return false if !block_given? && arr.nil?
+
+    #regex_exp = /^[a-z][A_Z]$/g
+    #regex_exp = /[a-z][A-Z][0-9]/
 
     result = true
     # loop through array and pushes elements that are true
@@ -96,11 +99,12 @@ module Enumerable
         end
       elsif arr == String || arr == Regexp
         my_each do |x|
-        return result = false unless x.match?(arr)
+          return result = false unless x.match(regex_exp)
+          #puts "#{arr}"
         end
       elsif arr == Integer
         my_each do |y|
-        return result = false unless y == arr
+          return result = false unless y == arr
         end
       end  
     end
