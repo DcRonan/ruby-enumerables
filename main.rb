@@ -20,15 +20,15 @@ module Enumerable
   #  my_each_with_index
   # ====================
 
-  def my_each_with_index(arr)
-    return arr unless block_given?
+  def my_each_with_index(arr = nil)
+    return to_enum unless block_given?
 
-    arr_size = arr.length
+    arr_size = Array(self).length
     # loops and returns each number and index in the array
     arr_size.times do |i|
-      yield(arr[i], i)
+      yield(Array(self)[i], i)
     end
-    arr
+    self
   end
 
   # ===========

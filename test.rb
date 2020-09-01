@@ -1,19 +1,19 @@
 require_relative 'main.rb'
-# my_array = [2, 6, 4, 6, 8]
-my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6 }
+my_array = [2, 6, 4, 6, 8]
+# my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6 }
 # my_range = (10..15)
 ####### test cases for my_each ###########
 # p my_array.my_each { |i| puts i }
 # my_range.my_each { |i| puts i}
-p my_hash.my_each { |i, j| puts "#{i} : #{j}"}
+# p my_hash.my_each { |i, j| puts "#{i} : #{j}"}
 ##########################################
 ### test cases for my_each_with_index ####
-# my_range.my_each_with_index { |i , x| p "#{x} : #{i}"}
+# p my_range.my_each_with_index { |i , x| puts "#{i} : #{x}"}
 # my_array.my_each_with_index { |i, j| p "#{j} : #{i}" }
-# my_hash.my_each { |i, j| p "#{i} : #{j}"}
+# p my_hash.my_each_with_index { |i, j| puts "#{i} : #{j}"}
 ##########################################
 ####### test cases for my_select #########
-# p my_array.my_select { |i| i.even? }
+p my_array.my_select { |i| i.even? }
 # p my_range.my_select { |i| i.even? }
 # my_hash.my_select { |i , j| p j.even? }# j here is the value
 ##########################################
