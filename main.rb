@@ -214,17 +214,55 @@ module Enumerable
   #   self
   # end
 
-  def my_inject(arr = nil)
-    memo = 0
 
-    if arr.nil?
-    my_each do |i, x|
-      memo += yield(i, x)
+  #def my_inject(arr=mil)
+    
+    #memo = 0
+
+    #if arr.nil?
+    #my_each do |i, x|
+      #memo += yield(i, x)
+    #end
+    #end
+  #memo
+  #end
+
+  def my_inject(accumulator = 0 ||  memo = "",  operator = :+)
+    result = 0
+    result_one = ''
+    arr_size = Array(self).length
+
+    return to_enum(:my_inject) unless block_given?
+
+    arr_size.times do |i|
+      if Array(self)[i].class == Integer || Array(self)[i].class == Float
+        case operator 
+        when :+
+          result += yield(Array(self)[i])
+        when :-
+          result -= yield(Array(self)[i])
+        when :*
+          result = 1
+          result *= yield(Array(self)[i])
+        when :/
+          result = 1
+          result /= yield(Array(self)[i])
+        when :%
+          result = 1
+          result %= yield(Array(self)[i])
+        when :**
+          result = 1
+          result **= yield(Array(self)[i])
+        end      
+        return result
+      elsif Array(self) == String
+        return result_one += yield(Array(self)[i])
+      end
     end
-    end
-  memo
   end
+
 end
+
 
   # =============
   #  multiply_els
