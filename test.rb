@@ -65,14 +65,14 @@ require_relative 'main.rb'
 ####### test cases for my_map #########
 # p my_array.my_map {|i| i * i}
 # p [2, 6, 4, 6, 8].my_map{|i| i * i}
-# proc = Proc.new {|i| i**2}
+# proc = Proc.new {|i| i**3}
 # p my_array.my_map(&proc)
 # p my_array.my_map {|i| i**2}
 # p my_array.my_map
 ##########################################
 ####### test cases for my_inject #########
 # p my_array.my_inject {|i| i * 3}
-p [2, 6, 4, 6, 8].my_inject{|i| i * 5}
+# p [2, 6, 4, 6, 8].my_inject{|i| i * 5}
 # p my_array.my_inject {|i| i**2}
 # p my_array.my_inject (:*)
 ##########################################

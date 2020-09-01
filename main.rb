@@ -171,20 +171,11 @@ module Enumerable
   #  my_map
   # ========
 
-  def my_map(arr = nil)
-    arr = Array(self).to_a
-    return to_enum unless block_given?
-    
-    arr_size = Array(self).length
+  def my_map(&_proc)
     new_arr = []
 
-    arr_size.times do |i|
-      if block_given?
-        new_arr << yield(Array(self)[i])
-      elsif yield(Array(self)[i]).empty?
-        nil_value = nil
-        new_arr << nil_value
-      end
+    my_each do |i|
+      new_arr.push(yield(i))
     end
     new_arr
   end
