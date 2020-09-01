@@ -4,16 +4,16 @@ module Enumerable
   #  my_each
   # =========
 
-  def my_each(arr)
-    return arr unless block_given?
+  def my_each(arr = nil)
+    return to_enum unless block_given?
 
     # variable for the array's length
-    arr_size = arr.length
+    arr_size = Array(self).length
     # loops and returns each number in the array
     arr_size.times do |i|
-      yield(arr[i])
+      yield(Array(self)[i])
     end
-    arr
+    self
   end
 
   # ====================
