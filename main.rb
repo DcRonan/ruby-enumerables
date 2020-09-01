@@ -4,7 +4,7 @@ module Enumerable
   #  my_each
   # =========
 
-  def my_each(arr = nil)
+  def my_each(_arr = nil)
     return to_enum(:my_each) unless block_given?
 
     # variable for the array's length
@@ -20,7 +20,7 @@ module Enumerable
   #  my_each_with_index
   # ====================
 
-  def my_each_with_index(arr = nil)
+  def my_each_with_index(_arr = nil)
     return to_enum(my_each_with_index) unless block_given?
 
     arr_size = Array(self).length
@@ -35,7 +35,7 @@ module Enumerable
   #  my_select
   # ===========
 
-  def my_select(arr = nil)
+  def my_select(_arr = nil)
     return to_enum(:my_select) unless block_given?
 
     # new array that contains the passed arguments
@@ -63,11 +63,11 @@ module Enumerable
   #   my_each do |x|
   #     if yield(Array(self)[x])
   #       if yield(Array(self)[x]).class == Integer
-  #         new_arr.push(Array(self)[x]) 
-  #       elsif yield(Array(self)[x]).class == Float 
+  #         new_arr.push(Array(self)[x])
+  #       elsif yield(Array(self)[x]).class == Float
   #         #should raise an error if even? or odd? methods are in the block
 
-  #         new_arr.push(Array(self)[x]) 
+  #         new_arr.push(Array(self)[x])
   #       elsif yield(Array(self)[x]).class == String
   #         new_arr.push(Array(self)[x]) if yield(Array(self)[x]).match?(self) #regex/../
   #       end
@@ -84,31 +84,31 @@ module Enumerable
   #   result
   # end
 
-  def my_all?(arr = nil, regex_exp = /[a-z][A-Z][0-9]/) #regex for symbols 
+  def my_all?(arr = nil, regex_exp = /[a-z][A-Z][0-9]/)
     return false if !block_given? && arr.nil?
 
-    #regex_exp = /^[a-z][A_Z]$/g
-    #regex_exp = /[a-z][A-Z][0-9]/
+    # regex_exp = /^[a-z][A_Z]$/g
+    # regex_exp = /[a-z][A-Z][0-9]/
 
     result = true
     # loop through array and pushes elements that are true
-    my_each do |i|
+    my_each do
       if arr.nil?
         my_each do |i|
-         return result = false unless yield(i)
+          return result = false unless yield(i)
         end
       elsif arr == String || arr == Regexp
         my_each do |x|
           return result = false unless x =~ regex_exp
-          #return result = false unless x.include? "#{regex_exp}"
-          #return result = false unless x.match(regex_exp)
-          #puts "#{arr}"
+          # return result = false unless x.include? "#{regex_exp}"
+          # return result = false unless x.match(regex_exp)
+          # puts "#{arr}"
         end
       elsif arr == Integer
         my_each do |y|
           return result = false unless y == arr
         end
-      end  
+      end
     end
     result
   end
@@ -144,9 +144,7 @@ module Enumerable
     return_value = true
 
     arr_size.times do |i|
-      unless !yield(arr[i]) || arr[i].nil? || arr[i] == false
-        return_value = false
-      end
+      return_value = false unless !yield(arr[i]) || arr[i].nil? || arr[i] == false
     end
     return_value
   end
@@ -159,7 +157,7 @@ module Enumerable
     arr_size = Array(self).length
     count = 0
 
-    if !block_given?
+    unless block_given?
       if !count_one.zero?
         arr_size.times do |i|
           count += 1 if Array(self)[i] == count_one
@@ -176,7 +174,7 @@ module Enumerable
     end
     count
   end
-  
+
   # ========
   #  my_map
   # ========
@@ -213,20 +211,19 @@ module Enumerable
   #   self
   # end
 
+  # def my_inject(arr=mil)
 
-  #def my_inject(arr=mil)
-    
-    #memo = 0
+  # memo = 0
 
-    #if arr.nil?
-    #my_each do |i, x|
-      #memo += yield(i, x)
-    #end
-    #end
-  #memo
-  #end
+  # if arr.nil?
+  # my_each do |i, x|
+  # memo += yield(i, x)
+  # end
+  # end
+  # memo
+  # end
 
-  def my_inject(accumulator = 0 ||  memo = "",  operator = :+)
+  def my_inject(_accumulator = 0 || _memo = '', operator = :+)
     result = 0
     result_one = ''
     arr_size = Array(self).length
@@ -235,7 +232,7 @@ module Enumerable
 
     arr_size.times do |i|
       if Array(self)[i].class == Integer || Array(self)[i].class == Float
-        case operator 
+        case operator
         when :+
           result += yield(Array(self)[i])
         when :-
@@ -252,23 +249,21 @@ module Enumerable
         when :**
           result = 1
           result **= yield(Array(self)[i])
-        end      
+        end
         return result
       elsif Array(self) == String
         return result_one += yield(Array(self)[i])
       end
     end
   end
-
 end
 
+# =============
+#  multiply_els
+# =============
 
-  # =============
-  #  multiply_els
-  # =============
-
-  def multiply_els(arr)
-    arr.my_inject(:*)
-  end
+def multiply_els(arr)
+  arr.my_inject(:*)
+end
 
 # rubocop:enable Metrics/ModuleLength
