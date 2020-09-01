@@ -19,13 +19,17 @@ require_relative 'main.rb'
 # p my_hash.my_select { |i , j| j.even? }# j here is the value
 ##########################################
 ####### test cases for my_all? ###########
+# p [nil, 1, 2, 3, 4].my_all?
+# p [1, 2, false, 3, 4].my_all?
+# p res = ['apple', 'orange'].my_all?
+# p [1, 2, 3, 4].my_all? { }
+# p res = ['apple', 'orange'].my_all?
 # p my_array.my_all? { |i| i.even? }
 # p my_array_one.my_all? { |i| i.even? }
 # p my_range.my_all? { |i| i.even? }
 # p my_hash.my_all? { |i, j| j.even? }# j here is the value
-# p res = ['apple', 'orange'].my_all?
-p ['Gurbuz', 'Turkiye', 'retim'].my_all?(/u/)
-# p ['Gurbuz', 'Turkiye', 'kretim'].my_all?(/v/)
+# p ['Gurbuz', 'Turkiye', 'retim'].my_all?(/u/)
+ p ['Gurbuz', 'Turkiye', 'kretim'].my_all?(/v/)
 ##########################################
 ####### test cases for my_any? ###########
 #  p my_array.my_any? { |i| i.even? }
