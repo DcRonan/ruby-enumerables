@@ -35,13 +35,13 @@ module Enumerable
   #  my_select
   # ===========
 
-  def my_select(arr)
+  def my_select(arr = nil)
     # new array that contains the passed arguments
     new_arr = []
-    arr_size = arr.length
+    arr_size = Array(self).length
     # loop through array and pushes elements that are true
     arr_size.times do |x|
-      new_arr.push(arr[x]) if yield(arr[x])
+      new_arr.push(Array(self)[x]) if yield(Array(self)[x])
     end
     new_arr
   end

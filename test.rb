@@ -1,6 +1,6 @@
 require_relative 'main.rb'
-my_array = [2, 6, 4, 6, 8]
-# my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6 }
+# my_array = [2, 6, 4, 6, 8, 9]
+# my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7 }
 # my_range = (10..15)
 ####### test cases for my_each ###########
 # p my_array.my_each { |i| puts i }
@@ -13,9 +13,9 @@ my_array = [2, 6, 4, 6, 8]
 # p my_hash.my_each_with_index { |i, j| puts "#{i} : #{j}"}
 ##########################################
 ####### test cases for my_select #########
-p my_array.my_select { |i| i.even? }
+# p my_array.my_select { |i| i.even? }
 # p my_range.my_select { |i| i.even? }
-# my_hash.my_select { |i , j| p j.even? }# j here is the value
+# p my_hash.my_select { |i , j| j.even? }# j here is the value
 ##########################################
 ####### test cases for my_all? ###########
 # p my_array.my_all? { |i| i.even? }
