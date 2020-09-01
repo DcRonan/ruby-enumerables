@@ -144,8 +144,7 @@ module Enumerable
     return_value = true
 
     arr_size.times do |i|
-      unless !yield(arr[i]) || arr[i].nil? ||
-             arr[i] == false
+      unless !yield(arr[i]) || arr[i].nil? || arr[i] == false
         return_value = false
       end
     end
