@@ -50,20 +50,30 @@ module Enumerable
   #  my_all
   # ========
 
-  def my_all?(arr)
+  def my_all?(arr = nil)
     return false unless block_given?
 
     # new array that contains the passed arguments
     new_arr = []
     false_arr = []
-    arr_size = arr.length
+    arr_size = Array(self).length
     result = true
     # loop through array and pushes elements that are true
     arr_size.times do |x|
-      new_arr.push(arr[x]) if yield(arr[x])
+      if yield(Array(self)[x])
+        if yield(Array(self)[x]).class == Integer
+          new_arr.push(Array(self)[x]) 
+        elsif yield(Array(self)[x]).class == Float 
+          #should raise an error if even? or odd? methods are in the block
+
+          new_arr.push(Array(self)[x]) 
+        elsif yield(Array(self)[x]).class == String
+          new_arr.push(Array(self)[x]) if yield(Array(self)[x]).match?(#regex/../)
+        end
+      end
     end
     arr_size.times do |i|
-      false_arr.push(arr[i]) unless yield(arr[i])
+      false_arr.push(Array(self)[i]) unless yield(Array(self)[i])
     end
     if new_arr.empty? || false_arr.empty?
       result
