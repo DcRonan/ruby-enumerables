@@ -73,7 +73,7 @@ my_range = (10..15)
 ##########################################
 ####### test cases for my_inject #########
 p my_array.my_inject {|i| i * 3}
-p my_array.my_inject { |i| i * 3 }
+#p my_array.my_inject { |i| i * 3 }
 # p [2, 6, 4, 6, 8].my_inject{|i| i * 5}
 # p my_array.my_inject {|i| i**2}
 # p my_array_two.my_inject (:*)
