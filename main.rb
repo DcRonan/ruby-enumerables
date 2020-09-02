@@ -5,7 +5,7 @@ module Enumerable
   # =========
 
   def my_each(_arr = nil)
-    return to_enum(:my_each) unless block_given?
+    return to_enum unless block_given?
 
     # variable for the array's length
     arr_size = Array(self).length
@@ -21,7 +21,7 @@ module Enumerable
   # ====================
 
   def my_each_with_index(_arr = nil)
-    return to_enum(my_each_with_index) unless block_given?
+    return to_enum unless block_given?
 
     arr_size = Array(self).length
     # loops and returns each number and index in the array
@@ -36,7 +36,7 @@ module Enumerable
   # ===========
 
   def my_select(_arr = nil)
-    return to_enum(:my_select) unless block_given?
+    return to_enum unless block_given?
 
     # new array that contains the passed arguments
     new_arr = []
@@ -140,8 +140,9 @@ module Enumerable
   # ========
 
   def my_map(&_proc)
-    new_arr = []
+    return to_enum unless block_given?
 
+    new_arr = []
     my_each do |i|
       new_arr.push(yield(i))
     end
