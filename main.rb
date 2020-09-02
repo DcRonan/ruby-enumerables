@@ -120,12 +120,10 @@ module Enumerable
     count = 0
 
     unless block_given?
-      if !count_one.zero?
-        arr_size.times do |i|
-          count += 1 if Array(self)[i] == count_one
-        end
-      else
-        return arr_size
+      return arr_size if count_one.zero?
+
+      arr_size.times do |i|
+        count += 1 if Array(self)[i] == count_one
       end
     end
 
@@ -185,55 +183,55 @@ module Enumerable
   # memo
   # end
 
-  def my_inject(_accumulator = 0 , operator = :+)
-    result = 0 
+  def my_inject(_accumulator = 0, operator = :+)
+    result = 0
     result_one = ''
     arr_size = Array(self).length
-    
+
     unless block_given?
-     if !_accumulator.nil? || operator.is_a?(Symbol)
-       arr_size.times do |i|
-        if Array(self)[i].class == Integer || Array(self)[i].class == Float
+      if !_accumulator.nil? || operator.is_a?(Symbol)
+        arr_size.times do |i|
+          if Array(self)[i].class == Integer || Array(self)[i].class == Float
             case operator
             when :-
-            result -= yield(Array(self)[i])
+              result -= yield(Array(self)[i])
             when :*
-            _accumulator = 1
-            result = 1
-            result *= yield(Array(self)[i])
+              _accumulator = 1
+              result = 1
+              result *= yield(Array(self)[i])
             when :/
-            _accumulator = 1
-            result = 1
-            result /= yield(Array(self)[i])
+              _accumulator = 1
+              result = 1
+              result /= yield(Array(self)[i])
             when :%
-            _accumulator = 1
-            result = 1
-            result = result % yield(Array(self)[i])
+              _accumulator = 1
+              result = 1
+              result = result % yield(Array(self)[i])
             when :**
-            result = 1
-            result **= yield(Array(self)[i])
+              result = 1
+              result **= yield(Array(self)[i])
             else
-            result += yield(Array(self)[i])
+              result += yield(Array(self)[i])
             end
-        elsif Array(self)[i].class == String
-         
+          elsif Array(self)[i].class == String
+
+          end
+        end
+      else
+        return to_enum(:my_inject)
+      end
+    end
+
+    if block_given?
+      if !_accumulator.nil? && !operator.is_a?(Symbol)
+        arr_size.times do |i|
+          if Array(self)[i].class == Integer || Array(self)[i].class == Float
+            return result += yield(sum, Array(self)[i])
+          elsif Array(self)[i].class == String
+
+          end
         end
       end
-     else
-       return to_enum(:my_inject)
-     end
-    end
-    
-    if block_given?
-     if !_accumulator.nil? && !operator.is_a?(Symbol)
-       arr_size.times do |i|
-        if Array(self)[i].class == Integer || Array(self)[i].class == Float
-          return result += yield(sum,Array(self)[i])
-        elsif Array(self)[i].class == String
-         
-        end
-       end
-     end
     end
  end
 
