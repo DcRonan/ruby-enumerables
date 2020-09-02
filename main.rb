@@ -223,8 +223,8 @@ module Enumerable
   # memo
   # end
 
-  def my_inject(_accumulator = 0 || _memo = '', operator = :+)
-    result = 0
+  def my_inject(_accumulator = 0 , operator = :+)
+    result = 0 
     result_one = ''
     arr_size = Array(self).length
 
@@ -233,22 +233,25 @@ module Enumerable
     arr_size.times do |i|
       if Array(self)[i].class == Integer || Array(self)[i].class == Float
         case operator
-        when :+
-          result += yield(Array(self)[i])
         when :-
           result -= yield(Array(self)[i])
         when :*
+          _accumulator = 1
           result = 1
           result *= yield(Array(self)[i])
         when :/
+          _accumulator = 1
           result = 1
           result /= yield(Array(self)[i])
         when :%
+          _accumulator = 1
           result = 1
           result %= yield(Array(self)[i])
         when :**
           result = 1
           result **= yield(Array(self)[i])
+        else
+          result += yield(Array(self)[i])
         end
         return result
       elsif Array(self) == String
