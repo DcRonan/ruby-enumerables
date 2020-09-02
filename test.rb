@@ -1,5 +1,5 @@
 require_relative 'main.rb'
-my_array = [4, 2, 6, 4, 4, 6, 10, 12, 2, 12, 6]
+my_array = [4, 2, 6, 4, 4, 6, 10, 12, 2, 12, 6, 13]
 my_array_one = [1.0, 2.0, 3.0, 0.0]
 my_array_two = [5, 6, 7, 8, 9, 10]
 my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
@@ -43,7 +43,7 @@ my_range = (10..15)
 # p ['Daniel', 'Connor', 'Ronan'].my_any?(/v/)
 ##########################################
 ####### test cases for my_none? ##########
-# p my_array.my_none? { |i| i.odd? }
+p my_array.my_none? { |i| i.odd? }
 # p my_range.my_none? { |i| i.even? }
 # p my_hash.my_none? { |i, j| j.odd? }# j here is the value
 # p my_array.my_none?(3)
