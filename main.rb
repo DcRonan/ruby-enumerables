@@ -226,39 +226,44 @@ module Enumerable
   def my_inject(_accumulator = 0 , operator = :+)
     result = 0 
     result_one = ''
+    nil_value = nil
     arr_size = Array(self).length
 
-    return to_enum(:my_inject) unless block_given?
-
-    arr_size.times do |i|
-      if Array(self)[i].class == Integer || Array(self)[i].class == Float
-        case operator
-        when :-
-          result -= yield(Array(self)[i])
-        when :*
-          _accumulator = 1
-          result = 1
-          result *= yield(Array(self)[i])
-        when :/
-          _accumulator = 1
-          result = 1
-          result /= yield(Array(self)[i])
-        when :%
-          _accumulator = 1
-          result = 1
-          result = result % yield(Array(self)[i])
-        when :**
-          result = 1
-          result **= yield(Array(self)[i])
-        else
-          result += yield(Array(self)[i])
-        end
-        return result
-      elsif Array(self) == String
-        return result_one += yield(Array(self)[i])
+    unless block_given?
+      if !_accumulator.empty? && !operator.empty?
+        arr_size.times do |i|
+          if Array(self)[i].class == Integer || Array(self)[i].class == Float
+              case operator
+              when :-
+              result -= yield(Array(self)[i])
+              when :*
+              _accumulator = 1
+              result = 1
+              result *= yield(Array(self)[i])
+              when :/
+              _accumulator = 1
+              result = 1
+              result /= yield(Array(self)[i])
+              when :%
+              _accumulator = 1
+              result = 1
+              result = result % yield(Array(self)[i])
+              when :**
+              result = 1
+              result **= yield(Array(self)[i])
+              else
+              result += yield(Array(self)[i])
+              end
+            return result
+          elsif Array(self) == String
+            return result_one += yield(Array(self)[i])
+          end
+        end    
+      else
+        return to_enum(:my_inject)
       end
-    end
-  end
+   end
+ end
   # making a test for my_inject(not working)
   def my_inject(arr)
     result = []
