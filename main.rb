@@ -246,7 +246,7 @@ module Enumerable
         when :%
           _accumulator = 1
           result = 1
-          result %= yield(Array(self)[i])
+          result = result % yield(Array(self)[i])
         when :**
           result = 1
           result **= yield(Array(self)[i])
@@ -259,6 +259,19 @@ module Enumerable
       end
     end
   end
+  # making a test for my_inject(not working)
+  def my_inject(arr)
+    result = []
+  
+    arr_size = arr.length
+    
+    arr_size.times do |i|
+      arr_size.times do |x|
+        result = arr[i] * arr[x]
+      end  
+    end  
+  return result
+  end 
 end
 
 # =============
