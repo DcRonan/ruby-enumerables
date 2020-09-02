@@ -94,31 +94,48 @@ module Enumerable
   #  my_none?
   # ==========
 
+  # def my_none?(arg = nil)
+  #   #!my_all?
+
+  #   result = false
+  #   arr_size = Array(self).length
+
+  #   if !arg.nil?
+  #     if arg.is_a?(Class)
+  #       my_each { |i| return result unless i.is_a?(arg) }
+  #     elsif arg.is_a?(Integer)
+  #       my_each do |x| 
+  #         unless x == arg 
+  #           return !result 
+  #         else
+  #           return result  
+  #         end
+  #       end
+  #     elsif arg.is_a?(Regexp) || arg.is_a?(String)
+  #       my_each { |y| return result unless y.match(arg) }
+  #     end
+  # elsif !block_given?
+  #     my_each { |a| return result if a.nil? }
+  # elsif block_given?
+  #   my_each { |b| return result unless yield(b) }
+  # end
+  #   !result
+  # end
+
   def my_none?(arg = nil)
-    #!my_all?
-
     result = false
-    arr_size = Array(self).length
 
-    if !arg.nil?
-      if arg.is_a?(Class)
-        my_each { |i| return result unless i.is_a?(arg) }
-      elsif arg.is_a?(Integer)
-        my_each do |x| 
-          unless x == arg 
-            return !result 
-          else
-            return result  
-          end
-        end
-      elsif arg.is_a?(Regexp) || arg.is_a?(String)
-        my_each { |y| return result unless y.match(arg) }
-      end
-  elsif !block_given?
-      my_each { |a| return result if a.nil? }
-  elsif block_given?
-    my_each { |b| return result unless yield(b) }
-  end
+    if !arg.nil? && arg.is_a?(Class)
+      my_each { |i| return result if i.is_a?(arg) }
+    elsif !arg.nil? && arg.is_a?(Integer)
+      my_each { |x| return result if x == arg }
+    elsif !arg.nil? && arg.is_a?(Regexp) || arg.is_a?(String)
+      my_each { |y| return result if y.match(arg) }
+    elsif !block_given?
+      my_each { |a| return result unless a.nil? || !a }
+    elsif block_given?
+      my_each { |b| return result if yield(b) }
+    end
     !result
   end
 
