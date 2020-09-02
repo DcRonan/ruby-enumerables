@@ -1,9 +1,9 @@
 require_relative 'main.rb'
-# my_array = [3, 2, 6, 3, 4, 6, 8, 3, 11, 3]
-# my_array_one = [1.0, 2.0, 3.0, 0.0]
-# my_array_two = [5, 6, 7, 8, 9, 10]
-# my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
-# my_range = (10..15)
+ my_array = [3, 2, 6, 3, 4, 6, 8, 3, 11, 3]
+ my_array_one = [1.0, 2.0, 3.0, 0.0]
+ my_array_two = [5, 6, 7, 8, 9, 10]
+ my_hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
+ my_range = (10..15)
 ####### test cases for my_each ###########
 # p my_array.my_each { |i| puts i }
 # my_range.my_each { |i| puts i}
@@ -72,7 +72,7 @@ require_relative 'main.rb'
 # p my_array.my_map
 ##########################################
 ####### test cases for my_inject #########
-# p my_array.my_inject { |i| i * 3 }
+ p my_array.my_inject { |i| i * 3 }
 # p my_array.my_inject { |i| i * 3 }
 # p [2, 6, 4, 6, 8].my_inject{|i| i * 5}
 # p my_array.my_inject {|i| i**2}
