@@ -84,34 +84,53 @@ module Enumerable
   #   result
   # end
 
-  def my_all?(arr = nil, regex_exp = /[a-z][A-Z][0-9]/)
-    return false if !block_given? && arr.nil?
+  # def my_all?(arr = nil, regex_exp = /[a-z][A-Z][0-9]/)
+  #   return false if !block_given? && arr.nil?
 
-    # regex_exp = /^[a-z][A_Z]$/g
-    # regex_exp = /[a-z][A-Z][0-9]/
+  #   # regex_exp = /^[a-z][A_Z]$/g
+  #   # regex_exp = /[a-z][A-Z][0-9]/
 
-    result = true
-    # loop through array and pushes elements that are true
-    my_each do
-      if arr.nil?
-        my_each do |i|
-          return result = false unless yield(i)
-        end
-      elsif arr == String || arr == Regexp
-        my_each do |x|
-          return result = false unless x =~ regex_exp
-          # return result = false unless x.include? "#{regex_exp}"
-          # return result = false unless x.match(regex_exp)
-          # puts "#{arr}"
-        end
-      elsif arr == Integer
-        my_each do |y|
-          return result = false unless y == arr
-        end
+  #   result = true
+  #   # loop through array and pushes elements that are true
+  #   my_each do
+  #     if arr.nil?
+  #       my_each do |i|
+  #         return result = false unless yield(i)
+  #       end
+  #     elsif arr == String || arr == Regexp
+  #       my_each do |x|
+  #         return result = false unless x =~ regex_exp
+  #         # return result = false unless x.include? "#{regex_exp}"
+  #         # return result = false unless x.match(regex_exp)
+  #         # puts "#{arr}"
+  #       end
+  #     elsif arr == Integer
+  #       my_each do |y|
+  #         return result = false unless y == arr
+  #       end
+  #     end
+  #   end
+  #   result
+  # end
+
+  def my_all?(arg = nil)
+    result = false
+
+      my_each do |i|
+      if !arg.nil? && i.is_a?(Class)
+      my_each { |i| result unless i.is_a?(arg) }
+      elsif !arg.nil? && i.is_a?(Integer)
+      my_each { |x| result unless arg == x }
+      elsif !arg.nil? && i.is_a?(Regexp) || i.is_a?(String)
+      my_each { |y| result unless y.match(arg) }
+      elsif !block_given?
+      my_each { |a| result unless a }
+      elsif block_given?
+      my_each { |b| result unless yield b }
       end
-    end
-    result
-  end
+      end
+     !result
+  end  
 
   # ========
   #  my_any
