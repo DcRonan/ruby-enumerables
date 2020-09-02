@@ -30,6 +30,12 @@ my_range = (10..15)
 # p my_hash.my_all? { |i, j| j.even? }# j here is the value
 # p ['Daniel', 'Connor', 'Ronan'].my_all?(/n/)
 # p ['Daniel', 'Connor', 'Ronan'].my_all?(/v/)
+# p %w[ant bear cat].my_all? { |word| word.length >= 3 } #=> true
+# p %w[ant bear cat].my_all? { |word| word.length >= 4 } #=> false
+# p %w[ant bear cat].my_all?(/t/)                        #=> false
+# p [1, 2i, 3.14].my_all?(Numeric)                       #=> true
+# p [nil, true, 99].my_all?                              #=> false
+# p [].my_all?                                           #=> true
 ##########################################
 ####### test cases for my_any? ###########
 #  p my_array.my_any? { |i| i.even? }
@@ -41,12 +47,18 @@ my_range = (10..15)
 # p res = ['apple', 'orange'].my_any?
 # p ['Daniel', 'Connor', 'Ronan'].my_any?(/a/)
 # p ['Daniel', 'Connor', 'Ronan'].my_any?(/v/)
+# p %w[ant bear cat].my_any? { |word| word.length >= 3 } #=> true
+# p %w[ant bear cat].my_any? { |word| word.length >= 4 } #=> true
+# p %w[ant bear cat].my_any?(/d/)                        #=> false
+# p [nil, true, 99].my_any?(Integer)                     #=> true
+# p [nil, true, 99].my_any?                              #=> true
+# p [].my_any?                                           #=> false
 ##########################################
 ####### test cases for my_none? ##########
 # p my_array.my_none? { |i| i.odd? }
 # p my_range.my_none? { |i| i.even? }
 # p my_hash.my_none? { |i, j| j.odd? }# j here is the value
-p my_array.my_none?(2)
+# p my_array.my_none?(2)
 # p my_range.my_none?(11)
 # p my_hash.my_none?(4)
 # p res = ['apple', 'orange'].my_none?

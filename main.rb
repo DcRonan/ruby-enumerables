@@ -83,44 +83,16 @@ module Enumerable
     elsif !arg.nil? && arg.is_a?(Regexp) || arg.is_a?(String)
       my_each { |y| return result if y.match(arg) }
     elsif !block_given?
-      my_each { |a| return result if a.nil? }
+      my_each { |a| return result unless a.nil? }
     elsif block_given?
-      my_each { |b| return result unless yield(b) }
+      my_each { |b| return result if yield(b) }
     end
-    result
+    !result
   end
 
   # ==========
   #  my_none?
   # ==========
-
-  # def my_none?(arg = nil)
-  #   #!my_all?
-
-  #   result = false
-  #   arr_size = Array(self).length
-
-  #   if !arg.nil?
-  #     if arg.is_a?(Class)
-  #       my_each { |i| return result unless i.is_a?(arg) }
-  #     elsif arg.is_a?(Integer)
-  #       my_each do |x| 
-  #         unless x == arg 
-  #           return !result 
-  #         else
-  #           return result  
-  #         end
-  #       end
-  #     elsif arg.is_a?(Regexp) || arg.is_a?(String)
-  #       my_each { |y| return result unless y.match(arg) }
-  #     end
-  # elsif !block_given?
-  #     my_each { |a| return result if a.nil? }
-  # elsif block_given?
-  #   my_each { |b| return result unless yield(b) }
-  # end
-  #   !result
-  # end
 
   def my_none?(arg = nil)
     result = false
