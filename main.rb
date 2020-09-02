@@ -73,36 +73,42 @@ module Enumerable
   #  my_any
   # ========
 
-  def my_any?(arr)
-    arr_size = arr.length
+  def my_any?(arg = nil)
+    result = true
 
-    result_arr = []
-    true_value = true
-
-    arr_size.times do |i|
-      if yield(arr[i])
-        result_arr.push(true)
-      else
-        result_arr.push(false)
-      end
+    if !arg.nil? && arg.is_a?(Class)
+      my_each { |i| return result if i.is_a?(arg) }
+    elsif !arg.nil? && arg.is_a?(Integer)
+      my_each { |x| return result if x == arg }
+    elsif !arg.nil? && arg.is_a?(Regexp) || arg.is_a?(String)
+      my_each { |y| return result if y.match(arg) }
+    elsif !block_given?
+      my_each { |a| return result unless arg.nil? }
+    elsif block_given?
+      my_each { |b| return result if yield(b) }
     end
-    result_arr.include? true_value ? true : false
+    !result
   end
 
   # ==========
   #  my_none?
   # ==========
 
-  def my_none?(arr)
-    return false unless block_given?
+  def my_none?(arg = nil)
+    result = false
 
-    arr_size = arr.length
-    return_value = true
-
-    arr_size.times do |i|
-      return_value = false unless !yield(arr[i]) || arr[i].nil? || arr[i] == false
+    if !arg.nil? && arg.is_a?(Class)
+      my_each { |i| return result unless i.is_a?(arg) }
+    elsif !arg.nil? && arg.is_a?(Integer)
+      my_each { |x| return result unless x == arg }
+    elsif !arg.nil? && arg.is_a?(Regexp) || arg.is_a?(String)
+      my_each { |y| return result unless y.match(arg) }
+    elsif !block_given?
+      my_each { |a| return result if a.nil? }
+    elsif block_given?
+      my_each { |b| return result unless yield(b) }
     end
-    return_value
+    !result
   end
 
   # ==========

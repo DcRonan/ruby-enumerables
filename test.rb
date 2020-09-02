@@ -39,8 +39,8 @@ my_range = (10..15)
 # p my_range.my_any?(11)
 # p my_hash.my_any?(4)
 # p res = ['apple', 'orange'].my_any?
-# p ['Gurbuz', 'Turkiye', 'uretim'].my_any?(/u/)
-# p ['Gurbuz', 'Turkiye', 'kretim'].my_any?(/v/)
+# p ['Daniel', 'Connor', 'Ronan'].my_any?(/a/)
+# p ['Daniel', 'Connor', 'Ronan'].my_any?(/v/)
 ##########################################
 ####### test cases for my_none? ##########
 # p my_array.my_none? { |i| i.odd? }
