@@ -43,10 +43,10 @@ my_range = (10..15)
 # p ['Daniel', 'Connor', 'Ronan'].my_any?(/v/)
 ##########################################
 ####### test cases for my_none? ##########
-p my_array.my_none? { |i| i.odd? }
+# p my_array.my_none? { |i| i.odd? }
 # p my_range.my_none? { |i| i.even? }
 # p my_hash.my_none? { |i, j| j.odd? }# j here is the value
-# p my_array.my_none?(3)
+# p my_array.my_none?(2)
 # p my_range.my_none?(11)
 # p my_hash.my_none?(4)
 # p res = ['apple', 'orange'].my_none?
