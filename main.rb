@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 module Enumerable
   # =========
   #  my_each
@@ -116,21 +116,21 @@ module Enumerable
   def my_all?(arg = nil)
     result = false
 
-      my_each do |i|
+    my_each do |i|
       if !arg.nil? && i.is_a?(Class)
-      my_each { |i| result unless i.is_a?(arg) }
+        my_each { |z| result unless z.is_a?(arg) }
       elsif !arg.nil? && i.is_a?(Integer)
-      my_each { |x| result unless arg == x }
+        my_each { |x| result unless arg == x }
       elsif !arg.nil? && i.is_a?(Regexp) || i.is_a?(String)
-      my_each { |y| result unless y.match(arg) }
+        my_each { |y| result unless y.match(arg) }
       elsif !block_given?
-      my_each { |a| result unless a }
+        my_each { |a| result unless a }
       elsif block_given?
-      my_each { |b| result unless yield b }
+        my_each { |b| result unless yield b }
       end
-      end
-     !result
-  end  
+    end
+    !result
+  end
 
   # ========
   #  my_any
@@ -242,8 +242,8 @@ module Enumerable
   # memo
   # end
 
-  def my_inject(_accumulator = 0 , operator = :+)
-    result = 0 
+  def my_inject(_accumulator = 0, operator = :+)
+    result = 0
     result_one = ''
     nil_value = nil
     arr_size = Array(self).length
@@ -252,50 +252,51 @@ module Enumerable
       if !_accumulator.empty? && !operator.empty?
         arr_size.times do |i|
           if Array(self)[i].class == Integer || Array(self)[i].class == Float
-              case operator
-              when :-
+            case operator
+            when :-
               result -= yield(Array(self)[i])
-              when :*
+            when :*
               _accumulator = 1
               result = 1
               result *= yield(Array(self)[i])
-              when :/
+            when :/
               _accumulator = 1
               result = 1
               result /= yield(Array(self)[i])
-              when :%
+            when :%
               _accumulator = 1
               result = 1
               result = result % yield(Array(self)[i])
-              when :**
+            when :**
               result = 1
               result **= yield(Array(self)[i])
-              else
+            else
               result += yield(Array(self)[i])
-              end
+            end
             return result
           elsif Array(self) == String
             return result_one += yield(Array(self)[i])
           end
-        end    
+        end
       else
         return to_enum(:my_inject)
       end
    end
  end
+
   # making a test for my_inject(not working)
-  def my_inject(arr)
-    result = []
-  
-    arr_size = arr.length
-    
-    arr_size.times do |i|
-      arr_size.times do |x|
-        result = arr[i] * arr[x]
-      end  
-    end  
-  return result
-  end 
+  # def my_inject(arr)
+  #   result = []
+
+  #   arr_size = arr.length
+
+  #   arr_size.times do |i|
+  #     arr_size.times do |x|
+  #       result = arr[i] * arr[x]
+  #     end
+  #   end
+  #   return result
+  # end
 end
 
 # =============
@@ -306,4 +307,4 @@ def multiply_els(arr)
   arr.my_inject(:*)
 end
 
-# rubocop:enable Metrics/ModuleLength
+# rubocop:enable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
