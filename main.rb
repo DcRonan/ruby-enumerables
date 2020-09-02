@@ -52,82 +52,19 @@ module Enumerable
   #  my_all
   # ========
 
-  # def my_all?(arr = nil)
-  #   return false unless block_given?
-
-  #   # new array that contains the passed arguments
-  #   new_arr = []
-  #   false_arr = []
-  #   result = true
-  #   # loop through array and pushes elements that are true
-  #   my_each do |x|
-  #     if yield(Array(self)[x])
-  #       if yield(Array(self)[x]).class == Integer
-  #         new_arr.push(Array(self)[x])
-  #       elsif yield(Array(self)[x]).class == Float
-  #         #should raise an error if even? or odd? methods are in the block
-
-  #         new_arr.push(Array(self)[x])
-  #       elsif yield(Array(self)[x]).class == String
-  #         new_arr.push(Array(self)[x]) if yield(Array(self)[x]).match?(self) #regex/../
-  #       end
-  #     end
-  #   end
-  #   arr_size.times do |i|
-  #     false_arr.push(Array(self)[i]) unless yield(Array(self)[i])
-  #   end
-  #   if new_arr.empty? || false_arr.empty?
-  #     result
-  #   else
-  #     result = false
-  #   end
-  #   result
-  # end
-
-  # def my_all?(arr = nil, regex_exp = /[a-z][A-Z][0-9]/)
-  #   return false if !block_given? && arr.nil?
-
-  #   # regex_exp = /^[a-z][A_Z]$/g
-  #   # regex_exp = /[a-z][A-Z][0-9]/
-
-  #   result = true
-  #   # loop through array and pushes elements that are true
-  #   my_each do
-  #     if arr.nil?
-  #       my_each do |i|
-  #         return result = false unless yield(i)
-  #       end
-  #     elsif arr == String || arr == Regexp
-  #       my_each do |x|
-  #         return result = false unless x =~ regex_exp
-  #         # return result = false unless x.include? "#{regex_exp}"
-  #         # return result = false unless x.match(regex_exp)
-  #         # puts "#{arr}"
-  #       end
-  #     elsif arr == Integer
-  #       my_each do |y|
-  #         return result = false unless y == arr
-  #       end
-  #     end
-  #   end
-  #   result
-  # end
-
   def my_all?(arg = nil)
     result = false
 
-    my_each do |i|
-      if !arg.nil? && i.is_a?(Class)
-        my_each { |z| result unless z.is_a?(arg) }
-      elsif !arg.nil? && i.is_a?(Integer)
-        my_each { |x| result unless arg == x }
-      elsif !arg.nil? && i.is_a?(Regexp) || i.is_a?(String)
-        my_each { |y| result unless y.match(arg) }
-      elsif !block_given?
-        my_each { |a| result unless a }
-      elsif block_given?
-        my_each { |b| result unless yield b }
-      end
+    if !arg.nil? && arg.is_a?(Class)
+      my_each { |i| return result unless i.is_a?(arg) }
+    elsif !arg.nil? && arg.is_a?(Integer)
+      my_each { |x| return result unless x == arg }
+    elsif !arg.nil? && arg.is_a?(Regexp) || arg.is_a?(String)
+      my_each { |y| return result unless y.match(arg) }
+    elsif !block_given?
+      my_each { |a| return result if a.nil? }
+    elsif block_given?
+      my_each { |b| return result unless yield(b) }
     end
     !result
   end
