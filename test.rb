@@ -1,9 +1,10 @@
 require_relative 'main.rb'
-arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 3]
-arr_dec = [1.0, 2.0, 3.0, 0.0]
-arr_two = [5, 6, 7, 8, 9, 10]
-hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
-range = (10..15)
+# arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 3]
+# arr_three = [4, 6, 4, 4, 6, 10, 12, 12, 6, 13, 3, 3, 3]
+# arr_dec = [1.0, 2.0, 3.0, 0.0]
+# arr_two = [5, 6, 7, 8, 9, 10]
+# hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
+# range = (10..15)
 ####### test cases for my_each ###########
 # p arr.my_each
 # p arr.my_each { |i| puts i }
@@ -90,7 +91,9 @@ range = (10..15)
 # p [2, 6, 4, 6, 8].my_inject { |i| i * 5 }
 # p arr.my_inject { |i| i**2 }
 # p arr.my_inject (:*)
-# p (5..10).my_inject { |sum, n| sum + n }            #=> 45
+# p arr_three.my_inject { |sum, x| sum + x } #return 86
+# p arr_three.my_inject(1) { |sum, x| sum + x } #return 87
+# p (5..10).my_inject { |sum, n| sum + n } #=> 45
 # p (5..10).my_inject(1) { |product, n| product * n } #=> 151200
 ##########################################
 # p multiply_els(arr)

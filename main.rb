@@ -153,68 +153,18 @@ module Enumerable
   #  my_inject
   # ===========
 
-  # def my_inject(arr = nil)
-  #   result = 0
-  #   sum = 0
-  #   string = ''
-  #   return to_enum unless block_given?
-
-  #   arr_size = Array(self).length
-  #   arr_size.times do |i|
-  #     if block_given?
-  #       if Array(self)[i].class == Integer || Array(self)[i].class == Float
-  #         result += yield(sum, Array(self)[i])
-  #       elsif Array(self)[i].class == String
-  #         result = yield(string, Array(self)[i])
-  #       end
-  #     end
-  #   end
-  #   self
-  # end
-
-  # def my_inject(arr=mil)
-
-  # memo = 0
-
-  # if arr.nil?
-  # my_each do |i, x|
-  # memo += yield(i, x)
-  # end
-  # end
-  # memo
-  # end
-
-  def my_inject(_accumulator = nil, operator = nil)
+  def my_inject(accumulator = nil, operator = nil)
     result = 0
-    result_one = ''
     arr_size = Array(self).length
-    
-    if block_given?
-      if !_accumulator.nil? && !operator.is_a?(Symbol)
-        arr_size.times do |i|
-          if Array(self)[i].class == Integer
-              return result += yield(sum, Array(self)[i])  
-          elsif Array(self)[i].class == String
 
-          end
-        end
-      end
+    return unless block_given?
+
+    return unless !accumulator.nil? && !operator.is_a?(Symbol) || !operator.is_a?(Integer)
+
+    arr_size.times do |i|
+      return result += yield(sum, Array(self)[i]) if Array(self)[i].class == Integer
     end
- end
-
-  # making a test for my_inject(not working)
-  # def my_inject(arr)
-  #   result = []
-
-  #   arr_size = arr.length
-
-  #   arr_size.times do |i|
-  #     arr_size.times do |x|
-  #       result = arr[i] * arr[x]
-  #     end
-  #   end
-  #   return result
-  # end
+  end
 end
 
 # =============
