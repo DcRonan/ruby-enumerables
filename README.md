@@ -64,7 +64,8 @@ The methods that we created:
 
 ## Acknowledgments
 
-### 👩‍💻 Brittany Blake [![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/BrittanyBlake)
+### 👩‍💻 Brittany Blake 
+[![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/BrittanyBlake)
 
 ### 🤝 Contributing
 
