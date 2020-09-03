@@ -154,17 +154,28 @@ module Enumerable
   # ===========
 
   def my_inject(accumulator = nil, operator = nil)
-    raise 'localJumpError' if !block_given? && operator.nil?
+    arr = Array(self)
 
-    result = 0
-    arr = arr.to_a unless arr.is_a?(Array)
-    arr_size = Array(self).length
+    operator = accumulator if accumulator.nil?
 
-    #return unless !accumulator.nil? && !operator.is_a?(Symbol) || !operator.is_a?(Integer)
-
-    arr_size.times do |i|
-      
+    if accumulator.nil? || accumulator.is_a?(Symbol)
+      arr = drop(1)  
+      accumulator = to_a[0]
+    else
+      arr = to_a
     end
+
+    if block_given?
+      arr.my_each do |i|
+        accumulator = yield(accumulator, i)
+      end
+    else
+      array.my_each do |i|
+        accumulator = accumulator.send(operator, i)
+      end
+    end
+
+    accumulator
   end
 end
 
