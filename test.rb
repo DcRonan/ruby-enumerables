@@ -1,5 +1,5 @@
 require_relative 'main.rb'
-arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 3]
+arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 4]
 arr_three = [4, 6, 4, 4, 6, 10, 12, 12, 6, 13, 3, 3, 3]
 arr_dec = [1.0, 2.0, 3.0, 0.0]
 arr_two = [5, 6, 7, 8, 9, 10]
@@ -26,7 +26,7 @@ range = (10..15)
 # p arr.my_select
 ##########################################
 ####### test cases for my_all? ###########
-# p [1, 2, 3, 4].my_all? { }
+# p [1, 2, 3, 4].my_all? {  }
 # p arr.my_all? { |i| i.even? }
 # p range.my_all? { |i| i.even? }
 # p hash.my_all? { |i, j| j.even? } # j here is the value
@@ -36,7 +36,8 @@ range = (10..15)
 # p %w[ant bear cat].my_all? { |word| word.length >= 4 } #=> false
 # p %w[ant bear cat].my_all?(/t/)                        #=> false
 # p [1, 2i, 3.14].my_all?(Numeric)                       #=> true
-# p [nil, true, 99].my_all?                              #=> false
+# p [nil, true, 99].my_all?                                #=> false
+# p ["hey", nil, false].my_all?                            #=> false
 # p [].my_all?                                           #=> true
 ##########################################
 ####### test cases for my_any? ###########
@@ -51,6 +52,7 @@ range = (10..15)
 # p [nil, true, 99].my_any?(Integer)                     #=> true
 # p [nil, true, 99].my_any?                              #=> true
 # p [].my_any?                                           #=> false
+# p [ nil, false, false ].my_any?                            #=> false
 ##########################################
 ####### test cases for my_none? ##########
 # p arr.my_none? { |i| i.odd? }

@@ -62,7 +62,7 @@ module Enumerable
     elsif !arg.nil? && arg.is_a?(Regexp) || arg.is_a?(String)
       my_each { |y| return result unless y.match(arg) }
     elsif !block_given?
-      my_each { |a| return result if a.nil? }
+      my_each { |a| return result if a.nil? || !a }
     elsif block_given?
       my_each { |b| return result unless yield(b) }
     end
@@ -83,7 +83,7 @@ module Enumerable
     elsif !arg.nil? && arg.is_a?(Regexp) || arg.is_a?(String)
       my_each { |y| return result if y.match(arg) }
     elsif !block_given?
-      my_each { |a| return result unless a.nil? }
+      my_each { |a| return result unless a.nil? || !a }
     elsif block_given?
       my_each { |b| return result if yield(b) }
     end
