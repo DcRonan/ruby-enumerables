@@ -99,6 +99,7 @@ range = (10..15)
 # p arr_three.my_inject(1) { |sum, x| sum + x } #return 87
 # p (5..10).my_inject { |sum, n| sum + n } #=> 45
 # p (5..10).my_inject(1) { |product, n| product * n } #=> 151200
+# p arr.my_inject
 ##########################################
 # p multiply_els(arr)
 ##########################################
