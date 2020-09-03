@@ -1,10 +1,10 @@
-require_relative 'main.rb'
-arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 4]
-arr_three = [4, 6, 4, 4, 6, 10, 12, 12, 6, 13, 3, 3, 3]
-arr_dec = [1.0, 2.0, 3.0, 0.0]
-arr_two = [5, 6, 7, 8, 9, 10]
-hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
-range = (10..15)
+# require_relative 'main.rb'
+# arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 4]
+# arr_three = [4, 6, 4, 4, 6, 10, 12, 12, 6, 13, 3, 3, 3]
+# arr_dec = [1.0, 2.0, 3.0, 0.0]
+# arr_two = [5, 6, 7, 8, 9, 10]
+# hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
+# range = (10..15)
 ####### test cases for my_each ###########
 # p arr.my_each
 # p arr.my_each { |i| puts i }
@@ -36,8 +36,8 @@ range = (10..15)
 # p %w[ant bear cat].my_all? { |word| word.length >= 4 } #=> false
 # p %w[ant bear cat].my_all?(/t/)                        #=> false
 # p [1, 2i, 3.14].my_all?(Numeric)                       #=> true
-# p [nil, true, 99].my_all?                                #=> false
-# p ["hey", nil, false].my_all?                            #=> false
+# p [nil, true, 99].my_all?                              #=> false
+# p ["hey", nil, false].my_all?                          #=> false
 # p [].my_all?                                           #=> true
 ##########################################
 ####### test cases for my_any? ###########
@@ -52,7 +52,7 @@ range = (10..15)
 # p [nil, true, 99].my_any?(Integer)                     #=> true
 # p [nil, true, 99].my_any?                              #=> true
 # p [].my_any?                                           #=> false
-# p [ nil, false, false ].my_any?                            #=> false
+# p [ nil, false, false ].my_any?                        #=> false
 ##########################################
 ####### test cases for my_none? ##########
 # p arr.my_none? { |i| i.odd? }
@@ -81,19 +81,20 @@ range = (10..15)
 ##########################################
 ####### test cases for my_map #########
 # p arr.my_map {|i| i * i}
-# p [2, 6, 4, 6, 8].my_map{|i| i * i}
+# p [2, 6, 4, 6, 8].map{|i| i * i}
 # proc = Proc.new {|i| i**3}
-# p arr.my_map(&proc)
+# p arr.map(&proc)
 # p proc.call(5)
 # p arr.my_map {|i| i**2}
 # p arr.my_map
 # p (1..4).my_map { |i| i * i }  #=> [1, 4, 9, 16]
 ##########################################
 ####### test cases for my_inject #########
-# p arr.my_inject { |i| i * 3 }
+# p arr.inject { |i| i * 3 }    # => 236196
 # p arr_two.my_inject { |i| i * 3 }
 # p [2, 6, 4, 6, 8].my_inject { |i| i * 5 }
 # p arr.my_inject { |i| i**2 }
+# p arr.my_inject
 # p arr.my_inject (:*)
 # p arr_three.my_inject { |sum, x| sum + x } #return 86
 # p arr_three.my_inject(1) { |sum, x| sum + x } #return 87

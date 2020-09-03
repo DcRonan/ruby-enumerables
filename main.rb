@@ -154,7 +154,7 @@ module Enumerable
   # ===========
 
   def my_inject(accumulator = nil, operator = nil)
-    raise 'localJumpError' if !block_given? || !operator
+    raise 'localJumpError' if !block_given? && operator.nil?
 
     result = 0
     arr_size = Array(self).length
