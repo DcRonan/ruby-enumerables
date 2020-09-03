@@ -140,13 +140,11 @@ module Enumerable
   # ========
 
   def my_map(&_proc)
-    # set &_proc parameter to nil
     return to_enum unless block_given?
 
     new_arr = []
     my_each do |i|
       new_arr.push(yield(i))
-      #return &_proc.nil? ? new_arr.push(yield(i)) : new_arr.push(&_proc.call(i))
     end
     new_arr
   end
