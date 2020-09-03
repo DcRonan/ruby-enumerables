@@ -153,38 +153,39 @@ module Enumerable
   #  my_inject
   # ===========
 
-  def my_inject(accumulator = nil, operator = nil)
+  def my_inject(*arg)
     arr = Array(self)
 
-    operator = accumulator if accumulator.nil?
+    arg_one = arg[0]
+    arg_two = arg[1]
+    arg_two = arg_one if arg_two.nil?
 
-    if accumulator.nil? || accumulator.is_a?(Symbol)
+    if arg_one.nil? || arg_one.is_a?(Symbol)
       arr = drop(1)  
-      accumulator = to_a[0]
+      arg_one = to_a[0]
     else
       arr = to_a
     end
 
     if block_given?
       arr.my_each do |i|
-        accumulator = yield(accumulator, i)
+        arg_one = yield(arg_one, i)
       end
     else
-      array.my_each do |i|
-        accumulator = accumulator.send(operator, i)
+      arr.my_each do |i|
+        arg_one = arg_one.send(arg_two, i)
       end
     end
-
-    accumulator
+    arg_one
   end
 end
 
-# =============
-#  multiply_els
-# =============
+  # =============
+  #  multiply_els
+  # =============
 
-def multiply_els(arr)
-  arr.my_inject(:*)
-end
+  def multiply_els(arr)
+    arr.my_inject(:*)
+  end
 
 # rubocop:enable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity

@@ -1,4 +1,4 @@
-# require_relative 'main.rb'
+require_relative 'main.rb'
  arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 4]
  arr_three = [4, 6, 4, 4, 6, 10, 12, 12, 6, 13, 3, 3, 3]
  arr_dec = [1.0, 2.0, 3.0, 0.0]
@@ -90,7 +90,7 @@
 # p (1..4).my_map { |i| i * i }  #=> [1, 4, 9, 16]
 ##########################################
 ####### test cases for my_inject #########
-p arr.my_inject { |i| i * 3 }    # => 236196
+# p arr.my_inject { |i| i * 3 }    # => 236196
 # p arr_two.my_inject { |i| i * 3 }
 # p [2, 6, 4, 6, 8].my_inject { |i| i * 5 }
 # p arr.my_inject { |i| i**2 }
@@ -101,6 +101,7 @@ p arr.my_inject { |i| i * 3 }    # => 236196
 # p (5..10).my_inject { |sum, n| sum + n } #=> 45
 # p (5..10).my_inject(1) { |product, n| product * n } #=> 151200
 # p arr.my_inject
+# p %w[cat dog horse].my_inject { |word, word_two| word.length > word_two.length ? word : word_two }
 ##########################################
 # p multiply_els(arr)
 ##########################################
