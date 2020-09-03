@@ -84,6 +84,7 @@ range = (10..15)
 # p [2, 6, 4, 6, 8].my_map{|i| i * i}
 # proc = Proc.new {|i| i**3}
 # p arr.my_map(&proc)
+# p proc.call(5)
 # p arr.my_map {|i| i**2}
 # p arr.my_map
 # p (1..4).my_map { |i| i * i }  #=> [1, 4, 9, 16]
