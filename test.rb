@@ -1,10 +1,10 @@
 require_relative 'main.rb'
-# arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 3]
-# arr_three = [4, 6, 4, 4, 6, 10, 12, 12, 6, 13, 3, 3, 3]
-# arr_dec = [1.0, 2.0, 3.0, 0.0]
-# arr_two = [5, 6, 7, 8, 9, 10]
-# hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
-# range = (10..15)
+arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 3]
+arr_three = [4, 6, 4, 4, 6, 10, 12, 12, 6, 13, 3, 3, 3]
+arr_dec = [1.0, 2.0, 3.0, 0.0]
+arr_two = [5, 6, 7, 8, 9, 10]
+hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
+range = (10..15)
 ####### test cases for my_each ###########
 # p arr.my_each
 # p arr.my_each { |i| puts i }
@@ -68,13 +68,14 @@ require_relative 'main.rb'
 # p [nil, false, true].my_none?                           #=> false
 ##########################################
 ####### test cases for my_count#########
-# p arr.my_count
-# p range.my_count
-# p hash.my_count
-# p arr.my_count(3)
-# p range.my_count(11)
-# p hash.my_count(2)
-# p arr.my_count{ |x| x % 2 == 0 }
+# p arr.my_count     #=> 11
+# p range.my_count  #=> 6
+# p hash.my_count     #=> 4
+# p arr.my_count(3)    #=> 1
+# p range.my_count(11)  #=>  1
+# p hash.my_count(2)    #=> 0
+# p arr.my_count{ |x| x % 2 == 0 }    #=> 10
+# p [0,0,0,4,5,7,8,0,2,1,0].my_count(0) #=> 5
 ##########################################
 ####### test cases for my_map #########
 # p arr.my_map {|i| i * i}
