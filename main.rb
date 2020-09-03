@@ -161,7 +161,7 @@ module Enumerable
     arg_two = arg_one if arg_two.nil?
 
     if arg_one.nil? || arg_one.is_a?(Symbol)
-      arr = drop(1)  
+      arr = drop(1)
       arg_one = to_a[0]
     else
       arr = to_a
@@ -180,12 +180,12 @@ module Enumerable
   end
 end
 
-  # =============
-  #  multiply_els
-  # =============
+# =============
+#  multiply_els
+# =============
 
-  def multiply_els(arr)
-    arr.my_inject(:*)
-  end
+def multiply_els(arr)
+  arr.my_inject(:*)
+end
 
 # rubocop:enable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
