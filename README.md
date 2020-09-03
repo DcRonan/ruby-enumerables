@@ -62,9 +62,9 @@ The methods that we created:
 [![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/chelmerrox) <br>
 [![LINKEDIN](https://img.shields.io/badge/-LINKEDIN-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/losalini-rokocakau)
 
-### Acknowledgments
+## Acknowledgments
 
-- # Brittany Blake [![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/BrittanyBlake)
+### 👩‍💻 Brittany Blake [![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/BrittanyBlake)
 
 ### 🤝 Contributing
 
