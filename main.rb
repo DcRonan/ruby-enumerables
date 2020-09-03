@@ -115,12 +115,12 @@ module Enumerable
   #  my_count
   # ==========
 
-  def my_count(count_one = 0)
+  def my_count(count_one = nil)
     arr_size = Array(self).length
     count = 0
 
     unless block_given?
-      return arr_size if count_one.zero?
+      return arr_size if count_one.nil?
 
       arr_size.times do |i|
         count += 1 if Array(self)[i] == count_one
