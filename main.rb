@@ -140,11 +140,13 @@ module Enumerable
   # ========
 
   def my_map(&_proc)
+    # set &_proc parameter to nil
     return to_enum unless block_given?
 
     new_arr = []
     my_each do |i|
       new_arr.push(yield(i))
+      #return &_proc.nil? ? new_arr.push(yield(i)) : new_arr.push(&_proc.call(i))
     end
     new_arr
   end
@@ -157,14 +159,13 @@ module Enumerable
     raise 'localJumpError' if !block_given? && operator.nil?
 
     result = 0
+    arr = arr.to_a unless arr.is_a?(Array)
     arr_size = Array(self).length
 
-    return unless block_given?
-
-    return unless !accumulator.nil? && !operator.is_a?(Symbol) || !operator.is_a?(Integer)
+    #return unless !accumulator.nil? && !operator.is_a?(Symbol) || !operator.is_a?(Integer)
 
     arr_size.times do |i|
-      return result += yield(sum, Array(self)[i]) if Array(self)[i].class == Integer
+      
     end
   end
 end
