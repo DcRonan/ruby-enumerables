@@ -15,7 +15,18 @@
 
 <img src="./assets/main-sc.png">
 
-The methods that we have created are: .each, .each_with_index, .select, .all, .any, .none, .count, .map and .inject.
+The methods that we created: 
+```
+- .each 
+- .each_with_index 
+- .select 
+- .all 
+- .any 
+- .none 
+- .count
+- .map
+- .inject
+```
 
 ## Built With
 ```
@@ -38,7 +49,6 @@ The methods that we have created are: .each, .each_with_index, .select, .all, .a
 2. Click run on repl.it
 ```
 
-
 ## Authors
 
 ### 👨‍💻 Daniel Ronan
@@ -51,6 +61,10 @@ The methods that we have created are: .each, .each_with_index, .select, .all, .a
 
 [![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/chelmerrox) <br>
 [![LINKEDIN](https://img.shields.io/badge/-LINKEDIN-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/losalini-rokocakau)
+
+### Acknowledgments
+
+- # Brittany Blake [![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/BrittanyBlake)
 
 ### 🤝 Contributing
 
