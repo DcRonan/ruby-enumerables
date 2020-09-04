@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
 module Enumerable
   # =========
   #  my_each
@@ -144,15 +144,16 @@ module Enumerable
 
     new_arr = []
     proc ? my_each { |i| new_arr << proc.call(i) } : my_each { |i| new_arr << yield(i) }
-    new_arr  
-  end  
+    new_arr
+  end
 
   # ===========
   #  my_inject
   # ===========
 
   def my_inject(*arg)
-    raise LocalJumpError.new unless block_given?
+    raise 'LocalJumpError: No block or argument has been given!' unless block_given? || arg.nil?
+
     arr = Array(self)
 
     arg_one = arg[0]
@@ -187,4 +188,4 @@ def multiply_els(arr)
   arr.my_inject(:*)
 end
 
-# rubocop:enable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
