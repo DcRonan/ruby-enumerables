@@ -139,21 +139,20 @@ module Enumerable
   #  my_map
   # ========
 
-  def my_map(&_proc)
-    return to_enum unless block_given?
+  def my_map(proc = nil)
+    return to_enum unless block_given? || proc
 
     new_arr = []
-    my_each do |i|
-      new_arr.push(yield(i))
-    end
-    new_arr
-  end
+    proc ? my_each { |i| new_arr << proc.call(i) } : my_each { |i| new_arr << yield(i) }
+    new_arr  
+  end  
 
   # ===========
   #  my_inject
   # ===========
 
   def my_inject(*arg)
+    raise LocalJumpError.new unless block_given?
     arr = Array(self)
 
     arg_one = arg[0]
