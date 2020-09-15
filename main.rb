@@ -7,9 +7,7 @@ module Enumerable
   def my_each(_arr = nil)
     return to_enum unless block_given?
 
-    # variable for the array's length
     arr_size = Array(self).length
-    # loops and returns each number in the array
     arr_size.times do |i|
       yield(Array(self)[i])
     end
@@ -24,7 +22,6 @@ module Enumerable
     return to_enum unless block_given?
 
     arr_size = Array(self).length
-    # loops and returns each number and index in the array
     arr_size.times do |i|
       yield(Array(self)[i], i)
     end
@@ -38,10 +35,8 @@ module Enumerable
   def my_select(_arr = nil)
     return to_enum unless block_given?
 
-    # new array that contains the passed arguments
     new_arr = []
     arr_size = Array(self).length
-    # loop through array and pushes elements that are true
     arr_size.times do |x|
       new_arr.push(Array(self)[x]) if yield(Array(self)[x])
     end
