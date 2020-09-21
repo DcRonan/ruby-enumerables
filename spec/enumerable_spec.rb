@@ -3,11 +3,11 @@ require './main'
 describe Enumerable do
   let(:arr) { [1, 50, 12, 99, 130, 17, 13] }
   let(:arr_str) { %w[Daniel Connor Ronan] }
-  let(:range) {1..10}
+  let(:range) { 1..10 }
   let(:hash) { ['Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4] }
 
-  let(:result) {[]}
-  let(:actual) {[]}
+  let(:result) { [] }
+  let(:actual) { [] }
 
   describe '#my_each' do
     it 'Returns each element of the array of Strings.' do
