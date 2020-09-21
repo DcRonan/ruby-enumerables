@@ -8,6 +8,8 @@ describe Enumerable do
   let(:arr_empty) { [] }
   let(:nil_true) { [nil, true, 99] }
   let(:str_num) { ['Daniel', 50, 3.5] }
+  let(:float_nums) { [2.5, 5, 5.6] }
+  let(:nil_false) { [nil, false] }
 
   let(:result) { [] }
   let(:actual) { [] }
@@ -143,6 +145,44 @@ describe Enumerable do
 
     it 'Returns true if the block returns a value other than false or nil' do
       expect(nil_true.my_any?).to be true
+    end
+  end
+
+  describe '#my_none?' do
+    it 'Checks if none of the elements in the Array of Integers passes the given block' do
+      expect(arr.my_none? { |i| i >= 130 }).to be false
+    end
+
+    it 'Checks if none of the elements in the Range passes the given block' do
+      expect(range.my_none? { |i| i > 10 }).to be true
+    end
+
+    it 'Checks if none of the keys or values in the Hash passes the given block' do
+      expect(hash.my_none? { |i, v| v <= 10 }).to be false
+    end
+
+    it 'Checks if none of the elements in the Array of Strings contains a word or letter' do
+      expect(arr_str.my_none?(/q/)).to be true
+    end
+
+    it 'Checks if none of the elements in the Array is an Integer' do
+      expect(nil_true.my_none?(Integer)).to be false
+    end
+
+    it 'Checks if none of the elements in the Array is a String' do
+      expect(str_num.my_none?(String)).to be false
+    end
+
+    it 'Returns true if an empty array has been given' do
+      expect(arr_empty.my_none?).to be true
+    end
+
+    it 'Returns true if none of block returns a true value' do
+      expect(nil_false.my_none?).to be true
+    end
+
+    it 'Checks if none of the elements is a Float' do
+      expect(float_nums.my_none?(Float)).to be false
     end
   end
 end
