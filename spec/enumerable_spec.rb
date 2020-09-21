@@ -4,7 +4,7 @@ describe Enumerable do
   let(:arr) { [1, 50, 12, 99, 130, 17, 13] }
   let(:arr_str) { %w[Daniel Connor Ronan] }
   let(:range) { (1..10) }
-  let(:hash) { [{'Jane Doe' => 10}, {'Jim Doe' => 6}, {'Joe Doe' => 7}, {'Dan Doe' => 4}] }
+  let(:hash) { { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 } }
 
   let(:result) { [] }
   let(:actual) { [] }
@@ -50,6 +50,24 @@ describe Enumerable do
 
     it 'Returns an Enumerator if no block is given' do
       expect(arr.my_each_with_index).to be_a(Enumerator)
+    end
+  end
+
+  describe '#my_select' do
+    it 'Returns and selects every element in a given Array of Integers that passes the given block' do
+      expect(arr.my_select { |i| i.even? ? result << i : nil }).to eq(arr.select { |i| i.even? ? actual << i : nil })
+    end
+
+    it 'Returns and selects every element in a given Range that passes the given block' do
+      expect(range.my_select { |i| i.even? ? result << i : nil }).to eq(range.select { |i| i.even? ? actual << i : nil })
+    end
+
+    it 'Returns and selects every element in the Array of Strings that passes the given block' do
+      expect(arr_str.my_select { |i| i == 'Ronan' ? result << i : nil  }).to eq(arr_str.select { |i| i == 'Ronan' ? actual << i : nil })
+    end
+
+    it 'Returns an Enumerator if no block is given' do
+      expect(arr.my_select).to be_a(Enumerator)
     end
   end
 end
