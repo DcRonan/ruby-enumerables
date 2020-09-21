@@ -1,3 +1,5 @@
+# rubocop:disable Layout/LineLength
+
 require './main'
 
 describe Enumerable do
@@ -68,7 +70,7 @@ describe Enumerable do
     end
 
     it 'Returns and selects every element in the Array of Strings that passes the given block' do
-      expect(arr_str.my_select { |i| i == 'Ronan' ? result << i : nil  }).to eq(arr_str.select { |i| i == 'Ronan' ? actual << i : nil })
+      expect(arr_str.my_select { |i| i == 'Ronan' ? result << i : nil }).to eq(arr_str.select { |i| i == 'Ronan' ? actual << i : nil })
     end
 
     it 'Returns an Enumerator if no block is given' do
@@ -78,7 +80,7 @@ describe Enumerable do
 
   describe '#my_all?' do
     it 'It returns false if no block is given' do
-      expect(arr.my_all? {  }).to be false
+      expect(arr.my_all? {}).to be false
     end
 
     it 'Checks if every element in the Array of Integers passes the given block' do
@@ -90,7 +92,7 @@ describe Enumerable do
     end
 
     it 'Checks if every key or value in the Hash passes the given block' do
-      expect(hash.my_all? { |i, v| v.odd? }).to be false
+      expect(hash.my_all? { |_i, v| v.odd? }).to be false
     end
 
     it 'Checks if every element in the Array of Strings contains a word or letter' do
@@ -116,7 +118,7 @@ describe Enumerable do
 
   describe '#my_any?' do
     it 'Checks if any element in the Array of Integers passes the given block' do
-      expect(arr.my_any? { |i| i.odd? }).to be true
+      expect(arr.my_any? { |i| i >= 12 }).to be true
     end
 
     it 'Checks if any element in the Range passes the given block' do
@@ -124,7 +126,7 @@ describe Enumerable do
     end
 
     it 'Checks if any key or value in the Hash passes the given block' do
-      expect(hash.my_any? { |i, v| v.odd? }).to be true
+      expect(hash.my_any? { |_i, v| v.odd? }).to be true
     end
 
     it 'Checks if any element in the Array of Strings contains a word or letter' do
@@ -158,7 +160,7 @@ describe Enumerable do
     end
 
     it 'Checks if none of the keys or values in the Hash passes the given block' do
-      expect(hash.my_none? { |i, v| v <= 10 }).to be false
+      expect(hash.my_none? { |_i, v| v <= 10 }).to be false
     end
 
     it 'Checks if none of the elements in the Array of Strings contains a word or letter' do
@@ -186,3 +188,5 @@ describe Enumerable do
     end
   end
 end
+
+# rubocop:enable Layout/LineLength
