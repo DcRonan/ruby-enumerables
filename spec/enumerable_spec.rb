@@ -25,5 +25,9 @@ describe Enumerable do
     it 'Returns each integer from a given Range.' do
       expect(range.my_each { |i| result << i }).to eq(range.each { |i| actual << i })
     end
+
+    it 'Returns an Enumerator if no block is given' do
+      expect(arr.my_each).to be_a(Enumerator)
+    end
   end
 end
