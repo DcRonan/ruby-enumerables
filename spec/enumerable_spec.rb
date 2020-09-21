@@ -1,4 +1,4 @@
-# rubocop:disable Layout/LineLength, Style/EvenOdd
+# rubocop:disable Layout/LineLength, Style/EvenOdd, Style/Proc, Layout/SpaceAroundOperators
 
 require './main'
 
@@ -13,7 +13,7 @@ describe Enumerable do
   let(:float_nums) { [2.5, 5, 5.6] }
   let(:zero_nums) { [0, 0, 0, 0, 0, 2, 54, 34, 0] }
   let(:nil_false) { [nil, false] }
-  let(:proc) { Proc.new {|i| i**3} }
+  let(:proc) { Proc.new { |i| i**3 } }
 
   let(:result) { [] }
   let(:actual) { [] }
@@ -247,4 +247,4 @@ describe Enumerable do
   end
 end
 
-# rubocop:enable Layout/LineLength, Style/EvenOdd
+# rubocop:enable Layout/LineLength, Style/EvenOdd, Style/Proc, Layout/SpaceAroundOperators
