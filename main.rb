@@ -64,24 +64,6 @@ module Enumerable
     !result
   end
 
-  arr = [4, 6, 4, 4, 6, 10, 12, 12, 6, 14, 4]
-  hash = { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 }
-  range = (10..15)
-
-# p [1, 2, 3, 4].my_all? {  }
-# p arr.my_all? { |i| i.even? }
-# p range.my_all? { |i| i.even? }
-# p hash.my_all? { |i, j| j.even? } # j here is the value
-# p ['Daniel', 'Connor', 'Ronan'].my_all?(/n/)
-# p ['Daniel', 'Connor', 'Ronan'].my_all?(/v/)
-# p %w[ant bear cat].my_all? { |word| word.length >= 3 } #=> true
-# p %w[ant bear cat].my_all? { |word| word.length >= 4 } #=> false
-# p %w[ant bear cat].my_all?(/t/)                        #=> false
-# p [1, 2i, 3.14].my_all?(Numeric)                       #=> true
-# p [nil, true, 99].my_all?                              #=> false
-# p ["hey", nil, false].my_all?                          #=> false
-# p [].my_all?                                           #=> true
-
   # ========
   #  my_any
   # ========

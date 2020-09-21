@@ -6,7 +6,8 @@ describe Enumerable do
   let(:range) { (1..10) }
   let(:hash) { { 'Jane Doe' => 10, 'Jim Doe' => 6, 'Joe Doe' => 7, 'Dan Doe' => 4 } }
   let(:arr_empty) { [] }
-  let(:false_nil) { [nil, true, 99] }
+  let(:nil_true) { [nil, true, 99] }
+  let(:str_num) { ['Daniel', 50, 3.5] }
 
   let(:result) { [] }
   let(:actual) { [] }
@@ -73,7 +74,7 @@ describe Enumerable do
     end
   end
 
-  describe '#my_all' do
+  describe '#my_all?' do
     it 'It returns false if no block is given' do
       expect(arr.my_all? {  }).to be false
     end
@@ -107,7 +108,41 @@ describe Enumerable do
     end
 
     it 'Returns false if the array returns false or nil' do
-      expect(false_nil.my_all?).to be false
+      expect(nil_true.my_all?).to be false
+    end
+  end
+
+  describe '#my_any?' do
+    it 'Checks if any element in the Array of Integers passes the given block' do
+      expect(arr.my_any? { |i| i.odd? }).to be true
+    end
+
+    it 'Checks if any element in the Range passes the given block' do
+      expect(range.my_any? { |i| i >= 10 }).to be true
+    end
+
+    it 'Checks if any key or value in the Hash passes the given block' do
+      expect(hash.my_any? { |i, v| v.odd? }).to be true
+    end
+
+    it 'Checks if any element in the Array of Strings contains a word or letter' do
+      expect(arr_str.my_any?(/e/)).to be true
+    end
+
+    it 'Checks if any element in the Array is an Integer' do
+      expect(nil_true.my_any?(Integer)).to be true
+    end
+
+    it 'Checks if any element in the Array is a String' do
+      expect(str_num.my_any?(String)).to be true
+    end
+
+    it 'Returns false if an empty array has been given' do
+      expect(arr_empty.my_any?).to be false
+    end
+
+    it 'Returns true if the block returns a value other than false or nil' do
+      expect(nil_true.my_any?).to be true
     end
   end
 end
