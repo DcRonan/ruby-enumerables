@@ -13,6 +13,7 @@ describe Enumerable do
   let(:float_nums) { [2.5, 5, 5.6] }
   let(:zero_nums) { [0, 0, 0, 0, 0, 2, 54, 34, 0] }
   let(:nil_false) { [nil, false] }
+  let(:proc) { Proc.new {|i| i**3} }
 
   let(:result) { [] }
   let(:actual) { [] }
@@ -224,6 +225,24 @@ describe Enumerable do
 
     it 'Counts how many elements there are in a Array that was passed in the given Argument' do
       expect(arr.my_count(0)).to eq(arr.count(0))
+    end
+  end
+
+  describe '#my_map' do
+    it 'Returns an Enumerator if no block is given' do
+      expect(arr.my_map).to be_a(Enumerator)
+    end
+
+    it 'Returns a new Array with the results of the given block' do
+      expect(arr.my_map { |i| result << i * i }).to eq(arr.map { |i| actual << i * i })
+    end
+
+    it 'Returns a new Array of results with elements from a Range' do
+      expect(range.my_map { |i| result << i ** 2 }).to eq(range.map { |i| actual << i ** 2 })
+    end
+
+    it 'Returns just the Proc if both a Block and a Proc is given' do
+      expect(arr.my_map(proc) { |i| i * i }).to eq(arr.my_map(proc))
     end
   end
 end
