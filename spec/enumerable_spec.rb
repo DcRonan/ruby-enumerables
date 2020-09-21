@@ -11,6 +11,7 @@ describe Enumerable do
   let(:nil_true) { [nil, true, 99] }
   let(:str_num) { ['Daniel', 50, 3.5] }
   let(:float_nums) { [2.5, 5, 5.6] }
+  let(:zero_nums) { [0, 0, 0, 0, 0, 2, 54, 34, 0] }
   let(:nil_false) { [nil, false] }
 
   let(:result) { [] }
@@ -175,7 +176,7 @@ describe Enumerable do
       expect(str_num.my_none?(String)).to be false
     end
 
-    it 'Returns true if an empty array has been given' do
+    it 'Returns true if an empty Array has been given' do
       expect(arr_empty.my_none?).to be true
     end
 
@@ -185,6 +186,44 @@ describe Enumerable do
 
     it 'Checks if none of the elements is a Float' do
       expect(float_nums.my_none?(Float)).to be false
+    end
+  end
+
+  describe '#my_count' do
+    it 'Counts and checks how many elements there are in the given Array' do
+      expect(arr.my_count).to eq(7)
+    end
+
+    it 'Counts how many elements there are in the given Array' do
+      expect(arr.my_count).to eq(arr.count)
+    end
+
+    it 'Counts how many elements there are in the given Range' do
+      expect(range.my_count).to eq(range.count)
+    end
+
+    it 'Counts how many elements there are in the given Hash' do
+      expect(hash.my_count).to eq(hash.count)
+    end
+
+    it 'Counts how many elements there are in a Array that was passed in the given Argument' do
+      expect(arr.my_count(12)).to eq(arr.count(12))
+    end
+
+    it 'Counts how many elements there are in a Range that was passed in the given Argument' do
+      expect(range.my_count(5)).to eq(range.count(5))
+    end
+
+    it 'Counts how many elements there are in a Hash that was passed in the given Argument' do
+      expect(hash.my_count(4)).to eq(hash.count(4))
+    end
+
+    it 'Counts how many elements there are in a Array that passes the given block' do
+      expect(arr.my_count { |i| i % 2 == 0 }).to eq(arr.count { |i| i % 2 == 0 })
+    end
+
+    it 'Counts how many elements there are in a Array that was passed in the given Argument' do
+      expect(arr.my_count(0)).to eq(arr.count(0))
     end
   end
 end
