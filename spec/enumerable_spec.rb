@@ -241,8 +241,42 @@ describe Enumerable do
       expect(range.my_map { |i| result << i ** 2 }).to eq(range.map { |i| actual << i ** 2 })
     end
 
+    it 'Returns the Proc when a Proc is passed through the Argument' do
+      expect(arr.my_map(proc)).to eq(arr.my_map(proc))
+    end
+
     it 'Returns just the Proc if both a Block and a Proc is given' do
       expect(arr.my_map(proc) { |i| i * i }).to eq(arr.my_map(proc))
+    end
+  end
+
+  describe '#my_inject' do
+    it 'Checks if the method works with a given block by implementing an Array' do
+      expect(arr.my_inject { |i| i * i }).to eq(arr.inject { |i| i * i })
+    end
+
+    it 'Checks if the method works with a given Proc by implementing an Array' do
+      expect(arr.my_inject(&proc)).to eq(arr.inject(&proc))
+    end
+
+    it 'Checks if the method works with a given Symbol by implementing an Array' do
+      expect(arr.my_inject(:+)).to eq(arr.inject(:+))
+    end
+
+    it 'Checks if the method works with a given Range' do
+      expect(range.my_inject { |i| i * 3 }).to eq(range.inject { |i| i * 3 })
+    end
+
+    it 'Checks if a block works with a given Array of Strings' do
+      expect(arr_str.my_inject { |w, w1| w.length > w1.length ? w : w1 }).to eq(arr_str.inject { |w, w1| w.length > w1.length ? w : w1 })
+    end
+
+    it 'Checks if a given Array works with passing through an Argument and block' do
+      expect(arr.my_inject(1) { |n, x| n * x }).to eq(arr.inject(1) { |n, x| n * x })
+    end
+
+    it 'Checks if a given Range works with passing through an Argument and block' do
+      expect(range.my_inject(1) { |n, x| n * x }).to eq(range.inject(1) { |n, x| n * x })
     end
   end
 end
