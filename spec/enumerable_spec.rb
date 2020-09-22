@@ -312,7 +312,7 @@ describe Enumerable do
     end
 
     it 'Returns as a failed test: Checks if the method works with a given Symbol by implementing an Array' do
-      expect(arr.my_inject(:+)).not_to eq(arr.inject(:+)) 
+      expect(arr.my_inject(:+)).not_to eq(arr.inject(:+)) # F
     end
   end
 end
