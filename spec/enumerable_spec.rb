@@ -38,10 +38,6 @@ describe Enumerable do
     it 'Returns an Enumerator if no block is given' do
       expect(arr.my_each).to be_a(Enumerator)
     end
-
-    it 'Returns as a failed test: Should return each element of an array of Integers' do
-      expect(arr.my_each { |i| result << i }).not_to eq(arr.each { |i| actual << i }) # F
-    end
   end
 
   describe 'my_each_with_index' do
@@ -64,10 +60,6 @@ describe Enumerable do
     it 'Returns an Enumerator if no block is given' do
       expect(arr.my_each_with_index).to be_a(Enumerator)
     end
-
-    it 'Returns as failed test: Should return an Enumerator if no block is given' do
-      expect(arr.my_each_with_index).not_to be_a(Enumerator) # F
-    end
   end
 
   describe '#my_select' do
@@ -85,10 +77,6 @@ describe Enumerable do
 
     it 'Returns an Enumerator if no block is given' do
       expect(arr.my_select).to be_a(Enumerator)
-    end
-
-    it 'Returns as failed test: Should return and select every element in a given Array of Integers that passes the given block' do
-      expect(arr.my_select { |i| i.even? ? result << i : nil }).not_to eq(arr.select { |i| i.even? ? actual << i : nil }) # F
     end
   end
 
@@ -128,10 +116,6 @@ describe Enumerable do
     it 'Returns false if the array returns false or nil' do
       expect(nil_true.my_all?).to be false
     end
-
-    it 'Returns as a failed test: Checks if every element in the Range passes the given block' do
-      expect(range.my_all? { |i| i > 10 }).to be true # F
-    end
   end
 
   describe '#my_any?' do
@@ -165,10 +149,6 @@ describe Enumerable do
 
     it 'Returns true if the block returns a value other than false or nil' do
       expect(nil_true.my_any?).to be true
-    end
-
-    it 'Returns as a failed test: Checks if any element in the Array is a String' do
-      expect(str_num.my_any?(String)).to be false # F
     end
   end
 
@@ -208,10 +188,6 @@ describe Enumerable do
     it 'Checks if none of the elements is a Float' do
       expect(float_nums.my_none?(Float)).to be false
     end
-
-    it 'Returns as a failed test: Checks if none of the elements in the Array of Strings contains a word or letter' do
-      expect(arr_str.my_none?(/q/)).to be false # F
-    end
   end
 
   describe '#my_count' do
@@ -250,10 +226,6 @@ describe Enumerable do
     it 'Counts how many elements there are in a Array that was passed in the given Argument' do
       expect(arr.my_count(0)).to eq(arr.count(0))
     end
-
-    it 'Returns as a failed test: Counts how many elements there are in the given Hash' do
-      expect(hash.my_count).not_to eq(hash.count) # F
-    end
   end
 
   describe '#my_map' do
@@ -275,10 +247,6 @@ describe Enumerable do
 
     it 'Returns just the Proc if both a Block and a Proc is given' do
       expect(arr.my_map(proc) { |i| i * i }).to eq(arr.my_map(proc))
-    end
-
-    it 'Returns as a failed test: Should return the Proc when a Proc is passed through the Argument' do
-      expect(arr.my_map(proc)).not_to eq(arr.my_map(proc)) # F
     end
   end
 
@@ -309,10 +277,6 @@ describe Enumerable do
 
     it 'Checks if a given Range works with passing through an Argument and block' do
       expect(range.my_inject(1) { |n, x| n * x }).to eq(range.inject(1) { |n, x| n * x })
-    end
-
-    it 'Returns as a failed test: Checks if the method works with a given Symbol by implementing an Array' do
-      expect(arr.my_inject(:+)).not_to eq(arr.inject(:+)) # F
     end
   end
 end
