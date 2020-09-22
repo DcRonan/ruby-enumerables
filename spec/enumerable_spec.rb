@@ -281,4 +281,16 @@ describe Enumerable do
   end
 end
 
+describe Multiply do
+  let(:multiply) { Multiply.new }
+  let(:arr) { [1, 50, 12, 17, 13] }
+  let(:result) { 132_600 }
+
+  describe '#multiply_els' do
+    it 'Returns the accumulator of each element multipled' do
+      expect(multiply.multiply_els(arr)).to eq(result)
+    end
+  end
+end
+
 # rubocop:enable Layout/LineLength, Style/EvenOdd, Style/Proc, Layout/SpaceAroundOperators
