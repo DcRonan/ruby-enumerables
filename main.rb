@@ -147,7 +147,7 @@ module Enumerable
   # ===========
 
   def my_inject(*arg)
-    raise 'LocalJumpError: No block or argument has been given!' if !block_given? && arg[0].nil?
+    return yield arg if !block_given? && arg[0].nil?
 
     arr = Array(self)
 
@@ -179,8 +179,10 @@ end
 #  multiply_els
 # =============
 
-def multiply_els(arr)
-  arr.my_inject(:*)
+class Multiply
+  def multiply_els(arr)
+    arr.my_inject(:*)
+  end
 end
 
 # rubocop:enable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
