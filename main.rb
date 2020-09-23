@@ -147,7 +147,7 @@ module Enumerable
   # ===========
 
   def my_inject(*arg)
-    raise LocalJumpError if !block_given? && arg[0].nil?
+    return yield arg if !block_given? && arg[0].nil?
 
     arr = Array(self)
 
