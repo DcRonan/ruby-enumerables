@@ -41,13 +41,22 @@ The methods that we created:
 
 [![Deploy](https://vercel.com/button)](https://repl.it/@DanielRonan1/enumerables#main.rb)
 
-## Run Tests
+## Getting Started
+
+```
+1. Clone this repo by opening the terminal and entering: https://github.com/DcRonan/ruby-enumerables.git
+2. Run 'cd/ruby-enumerables'
+3. Run 'ruby main.rb' to get started
+```
+
+## Tests
+
+### Install
+
 
 ### Run
-```
-1. Add test cases
-2. Click run on repl.it
-```
+
+![img](./assets/passed-sc.png)
 
 ## Authors
 
