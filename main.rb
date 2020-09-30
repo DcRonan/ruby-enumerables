@@ -179,10 +179,8 @@ end
 #  multiply_els
 # =============
 
-class Multiply
-  def multiply_els(arr)
-    arr.my_inject(:*)
-  end
+def multiply_els(arr)
+  arr.my_inject(:*)
 end
 
 # rubocop:enable Metrics/ModuleLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
