@@ -11,7 +11,7 @@
 | [License](#license) | 
 
 ## Description
-> In this project we was given the task to create identical methods that 'Ruby' provides in our own solutions.
+> In this project, we were given the task to create identical methods that 'Ruby' provides in our own solutions.
 
 <img src="./assets/main-sc.png">
 
