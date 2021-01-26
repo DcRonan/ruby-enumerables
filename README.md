@@ -11,7 +11,7 @@
 | [License](#license) | 
 
 ## Description
-> In this project, we were given the task to create identical methods that 'Ruby' provides in our own solutions.
+> In this project, we were given the task to create identical methods that 'Ruby' provides in our solutions.
 
 <img src="./assets/main-sc.png">
 
@@ -78,7 +78,7 @@ The methods that we created:
 [![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/chelmerrox) <br>
 [![LINKEDIN](https://img.shields.io/badge/-LINKEDIN-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/losalini-rokocakau)
 
-## Acknowledgments
+## Acknowledgements
 
 ### 👩‍💻 Brittany Blake 
 [![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/BrittanyBlake)
@@ -87,7 +87,7 @@ The methods that we created:
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](enter issues url here).
+Feel free to check the [issues page](https://github.com/DcRonan/ruby-enumerables/issues).
 
 ### Show your support
 
